@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\wecan\\source\\repos\\newFolder\\FinalProject-GameNight\\GameNight\\GameNight.csproj": {}
+    "C:\\Users\\lives\\source\\repos\\FinalProject-GameNight\\GameNight\\GameNight.csproj": {}
   },
   "projects": {
-    "C:\\Users\\wecan\\source\\repos\\newFolder\\FinalProject-GameNight\\GameNight\\GameNight.csproj": {
+    "C:\\Users\\lives\\source\\repos\\FinalProject-GameNight\\GameNight\\GameNight.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\wecan\\source\\repos\\newFolder\\FinalProject-GameNight\\GameNight\\GameNight.csproj",
+        "projectUniqueName": "C:\\Users\\lives\\source\\repos\\FinalProject-GameNight\\GameNight\\GameNight.csproj",
         "projectName": "GameNight",
-        "projectPath": "C:\\Users\\wecan\\source\\repos\\newFolder\\FinalProject-GameNight\\GameNight\\GameNight.csproj",
-        "packagesPath": "C:\\Users\\wecan\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\wecan\\source\\repos\\newFolder\\FinalProject-GameNight\\GameNight\\obj\\",
+        "projectPath": "C:\\Users\\lives\\source\\repos\\FinalProject-GameNight\\GameNight\\GameNight.csproj",
+        "packagesPath": "C:\\Users\\lives\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\lives\\source\\repos\\FinalProject-GameNight\\GameNight\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\wecan\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\lives\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -77,7 +77,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.102\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.201\\RuntimeIdentifierGraph.json"
         }
       }
     }
