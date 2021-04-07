@@ -1,0 +1,15 @@
+﻿@model GameNight.Models.Game
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+    <div class="box">
+        <div class="content">
+            <h3>Name: <a href="/Game/Details/@Model.Id">@Model.Title</a></h3>
+        </div>
+    </div>
+
+    <a href="/Game/Index/"><button>Game Page</button></a>
+
