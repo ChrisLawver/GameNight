@@ -1,0 +1,35 @@
+﻿@model IEnumerable<GameNight.Models.User>
+
+<h1>User List</h1>
+@foreach (var item in Model)
+{
+    <div>
+        <h2>@item.Username</h2>
+    </div>
+    <div>
+        @item.Location
+    </div>
+    <div>
+        <img src="@item.ProfilePic" />
+    </div>
+    <h3>@item.Username's Games</h3>
+    @foreach (var userGame in item.Games)
+    {
+        <div>
+            @userGame.Game.Title
+        </div>
+    }
+    <h3>@item.Username's Events</h3>
+    @foreach (var userEvent in item.Events)
+    {
+        <div>
+            @userEvent.Event.Name
+        </div>
+        <div>
+            @userEvent.Event.PlayedOn
+        </div>
+        <div>
+            @userEvent.Event.Location
+        </div>
+    }
+}

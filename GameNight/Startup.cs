@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using GameNight.Models; 
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,7 +26,11 @@ namespace GameNight
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
-            services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+            services.AddScoped<IRepository<Event>, EventRepository>();
+            services.AddScoped<IRepository<Game>, GameRepository>();
+            services.AddScoped<IRepository<User>, UserRepository>();
+            services.AddScoped<IRepository<UserEvent>, UserEventRepository>();
+            services.AddScoped<IRepository<UserGame>, UserGameRepository>();
             services.AddDbContext<GameNightContext>();
             services.AddMvc();
         }
