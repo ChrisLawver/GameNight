@@ -32,18 +32,22 @@ namespace GameNight.Controllers
 
         public ViewResult Create()
         {
-            return View(new Event());
+            ViewBag.Games = eventRepo.GetAllGames();
+            return View(new Event() { PlayedOn  = DateTime.Now });
         }
 
         [HttpPost]
         public ActionResult Create(Event model)
         {
+            ViewBag.Games = eventRepo.GetAllGames();
             eventRepo.Create(model);
+            ViewBag.Result = "You have successfully created an Event!";
             return View(model);
         }
 
         public ViewResult Update(int id)
         {
+            ViewBag.Games = eventRepo.GetAllGames();
             var event1 = eventRepo.GetById(id);
             return View(event1);
         }
@@ -51,7 +55,9 @@ namespace GameNight.Controllers
         [HttpPost]
         public ActionResult Update(Event model)
         {
+            ViewBag.Games = eventRepo.GetAllGames();
             eventRepo.Update(model);
+            ViewBag.Result = "You have successfully updated an Event!";
             return View(model);
         }
 
@@ -59,7 +65,7 @@ namespace GameNight.Controllers
         {
             var event1 = eventRepo.GetById(id);
             eventRepo.Delete(event1);
-            return RedirectToAction("Event");
+            return RedirectToAction("Index");
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using GameNight.Models;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -41,6 +42,11 @@ namespace GameNight.Repositories
         {
             db.Set<T>().Remove(entity);
             db.SaveChanges();
+        }
+
+        public IEnumerable<Game> GetAllGames()
+        {
+            return db.Set<Game>().ToList();
         }
     }
 }
