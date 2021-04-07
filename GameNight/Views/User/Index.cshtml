@@ -11,6 +11,7 @@
     </div>
     <div>
         <img src="@item.ProfilePic" />
+        <a class="btn btn-primary" href="/User/Delete/@item.Id">Delete</a>
     </div>
     <h3>@item.Username's Games</h3>
     @foreach (var userGame in item.Games)

@@ -60,7 +60,7 @@ namespace GameNight.Controllers
         {
             var user = userRepo.GetById(id);
             userRepo.Delete(user);
-            return RedirectToAction("User");
+            return RedirectToAction("Index");
         }
     }
 }
