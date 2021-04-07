@@ -1,0 +1,29 @@
+﻿@model IEnumerable<GameNight.Models.Event>
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Events</title>
+</head>
+<body>
+
+    @foreach (var item in Model)
+    {
+        <div class="box">
+            <div class="content">
+                <h3>Name: <a href="/Event/Details/@item.Id">@item.Name</a></h3>
+                <a href="/Event/Update/@item.Id"><button id="sendBtn">Edit Event</button></a> <a href="/Event/Delete/@item.Id"><button id="sendBtn">Delete Event</button></a>
+            </div>
+        </div>
+    }
+
+    <h1><a href="/Event/Create"><button id="sendBtn">Add an Event</button></a></h1>
+
+</body>
+</html>
