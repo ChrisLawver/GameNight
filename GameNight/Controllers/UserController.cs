@@ -39,7 +39,7 @@ namespace GameNight.Controllers
         public ActionResult Create(User model)
         {
             userRepo.Create(model);
-            return View(model);
+            return RedirectToAction("Details", new { id = model.Id});
         }
 
         public ViewResult Update(int id)
