@@ -52,7 +52,8 @@ namespace GameNight.Controllers
         public ActionResult Update(User model)
         {
             userRepo.Update(model);
-            return View(model);
+            return RedirectToAction("Details", new { id = model.Id });
+
         }
 
         public ActionResult Delete(int id)
