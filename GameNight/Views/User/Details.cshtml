@@ -1,0 +1,31 @@
+﻿@model GameNight.Models.User
+
+<div>
+    <h2>@Model.Username</h2>
+</div>
+<div>
+    @Model.Location
+</div>
+<div>
+    <img src="@Model.ProfilePic" />
+</div>
+<h3>@Model.Username's Games</h3>
+@foreach (var userGame in Model.Games)
+{
+    <div>
+        @userGame.Game.Title
+    </div>
+}
+<h3>@Model.Username's Events</h3>
+@foreach (var userEvent in Model.Events)
+{
+    <div>
+        @userEvent.Event.Name
+    </div>
+    <div>
+        @userEvent.Event.PlayedOn
+    </div>
+    <div>
+        @userEvent.Event.Location
+    </div>
+}
