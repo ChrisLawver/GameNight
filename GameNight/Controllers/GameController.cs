@@ -39,6 +39,7 @@ namespace GameNight.Controllers
         public ActionResult Create(Game model)
         {
             gameRepo.Create(model);
+            ViewBag.Result = "You have successfully created a game!";
             return View(model);
         }
 
@@ -52,6 +53,7 @@ namespace GameNight.Controllers
         public ActionResult Update(Game model)
         {
             gameRepo.Update(model);
+            ViewBag.Result = "You have successfully updated a game!";
             return View(model);
         }
 
@@ -59,7 +61,7 @@ namespace GameNight.Controllers
         {
             var game = gameRepo.GetById(id);
             gameRepo.Delete(game);
-            return RedirectToAction("Game");
+            return RedirectToAction("Index");
         }
     }
 }
