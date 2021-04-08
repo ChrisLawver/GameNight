@@ -72,7 +72,7 @@ namespace GameNight.Controllers
             {
                 game = new Game();
                 game.Title = name;
-                game.ExternalId = externalId;
+                //game.ExternalId = externalId;
                 //add game
                 gameRepo.Create(game);
             }

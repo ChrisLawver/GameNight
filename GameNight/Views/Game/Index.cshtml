@@ -20,7 +20,10 @@
     <div class="box">
         <div class="content">
             <h3>Name: <a href="/Game/Details/@item.Id">@item.Title</a></h3>
-            <a href="/Game/Update/@item.Id"><button id="editBtn">Edit Game</button></a> <a href="/Game/Delete/@item.Id"><button id="deleteBtn">Delete Game</button></a>
+            @*<a href="/Game/Update/@item.Id"><button id="editBtn" class="btn btn-primary">Edit Game</button></a> <a href="/Game/Delete/@item.Id"><button id="deleteBtn" class="btn btn-primary">Delete Game</button></a>*@
+            <a class="btn btn-primary" href="/Game/Update/@item.Id">Edit Game</a> <a class="btn btn-primary" href="/Game/Delete/@item.Id">Delete Game</a>
+
+
         </div>
     </div>
 }
