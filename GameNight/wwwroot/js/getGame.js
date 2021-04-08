@@ -15,10 +15,9 @@ let resultDisplay = document.getElementById('gameResult');
 
 buttonSubmit.addEventListener('click', function () {
     event.preventDefault();
-    let userInput = document.getElementById('search').value;        // might be nodeValue
+    let userInput = document.getElementById('search').value;
     const clientId = "3PWFEgwSVs";
     const url = `https://api.boardgameatlas.com/api/search?name=${userInput}&client_id=${clientId}`;
-    console.log(url);
     fetch(url)
         .then(response => response.json())
         .then(data => {
@@ -30,20 +29,26 @@ buttonSubmit.addEventListener('click', function () {
 
 function gameAttributes(data) {
     let results = data.games;
+    resultDisplay.innerHTML = "";
     results.forEach(result => {
         var name;
+        var gameImg;
+        var gameId = result.id;
         name = result.name;
-        console.log(name);
+        gameImg = result.images.small;
+        ShowResults(name, gameImg, gameId);
     });
 }
 
-//function testGame(results) {
-//    //let name = results.games[0].name;
-//    //console.log(name);
+function ShowResults(name, gameImg, gameId) {
 
-//    var name = [];
-//    for (let index = 0; index < results.name.length; index++) {
-//        name[index] = results.name[index].names;
-//    }
-//    console.log(name);
-//}
+    let link = document.createElement("a");
+    link.href = `/Game/CheckGame?externalId=${gameId}&name=${name}`;
+    let searchResult = document.createElement("h3");
+    let searchResultImg = document.createElement("img");
+    searchResult.innerText = name;
+    searchResultImg.src = gameImg;
+    link.appendChild(searchResult);
+    link.appendChild(searchResultImg);
+    resultDisplay.appendChild(link);
+}
