@@ -9,9 +9,9 @@
 
 // const clientSecret = "607f375cb167d59aac0bbd028e8822bd";
 
-
-
 let buttonSubmit = document.getElementById('gameSearch');
+
+let resultDisplay = document.getElementById('gameResult');
 
 buttonSubmit.addEventListener('click', function () {
     event.preventDefault();
@@ -21,6 +21,29 @@ buttonSubmit.addEventListener('click', function () {
     console.log(url);
     fetch(url)
         .then(response => response.json())
-        .then(data => console.log(data))
-    .catch (err => console.log(err))
+        .then(data => {
+            console.log(data);
+            gameAttributes(data);
+        })
+        .catch(err => console.log(err));
 })
+
+function gameAttributes(data) {
+    let results = data.games;
+    results.forEach(result => {
+        var name;
+        name = result.name;
+        console.log(name);
+    });
+}
+
+//function testGame(results) {
+//    //let name = results.games[0].name;
+//    //console.log(name);
+
+//    var name = [];
+//    for (let index = 0; index < results.name.length; index++) {
+//        name[index] = results.name[index].names;
+//    }
+//    console.log(name);
+//}
