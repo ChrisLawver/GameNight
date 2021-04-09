@@ -29,7 +29,7 @@ namespace GameNight.Controllers
             if (response.Result)
             {
                 HttpContext.Session.SetString("Username", response.User.Username);
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Home");
             }
             else
             {
@@ -49,7 +49,7 @@ namespace GameNight.Controllers
             GameNightContext db = new GameNightContext();
             db.Users.Add(model);
             db.SaveChanges();
-            return RedirectToAction("Login");
+            return RedirectToAction("Index", "Home");
         }
     }
 }

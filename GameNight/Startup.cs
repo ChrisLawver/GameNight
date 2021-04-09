@@ -25,6 +25,7 @@ namespace GameNight
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddSession();
             services.AddControllersWithViews();
             services.AddScoped<IRepository<Event>, EventRepository>();
             services.AddScoped<IRepository<Game>, GameRepository>();
@@ -53,7 +54,10 @@ namespace GameNight
 
             app.UseRouting();
 
+            app.UseSession();
+
             app.UseAuthorization();
+
 
             app.UseEndpoints(endpoints =>
             {

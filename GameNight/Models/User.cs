@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
-using GameNight.Helper;
+using GameNight.Helpers;
 
 namespace GameNight.Models
 {
@@ -29,6 +29,7 @@ namespace GameNight.Models
         }
         public string FirstName { get; set; }
         public string LastName { get; set; }
+        [RegularExpression("([^\\s]+(\\.(?i)(jpg|png|gif|bmp))$)")]
         public string ProfilePic { get; set; }
         public string Location { get; set; }
         public string Bio { get; set; }

@@ -4,6 +4,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using GameNight.Extensions;
+using GameNight.Helpers;
 
 namespace GameNight.Repositories
 {
@@ -47,6 +49,29 @@ namespace GameNight.Repositories
         public IEnumerable<Game> GetAllGames()
         {
             return db.Set<Game>().ToList();
+        }
+
+        public LoginResult CheckLogin(string username, string password)
+        {
+            var user = db.Set<User>().Where(u => u.Username == username && u.Password == Helpers.Helper.EncryptPassword(password)).FirstOrDefault();
+            if(user == null)
+            {
+                return new LoginResult()
+                {
+                    Result = false,
+                    Message = "No user found",
+                    User = null
+                };
+            }
+            else
+            {
+                return new LoginResult() 
+                { 
+                    Result = true, 
+                    Message = "", 
+                    User = user
+                };
+            }
         }
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GameNight.Repositories
 {
-    public interface IRepository<T> : ISelectList where T : class
+    public interface IRepository<T> : ISelectList, IAccount where T : class
     {
         IEnumerable<T> GetAll();
         T GetById(int id);
