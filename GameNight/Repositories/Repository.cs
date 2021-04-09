@@ -48,5 +48,12 @@ namespace GameNight.Repositories
         {
             return db.Set<Game>().ToList();
         }
+
+        public Game GetByExternalId(string externalId)
+        {
+            var game = db.Set<Game>().Where(g => g.ExternalId == externalId).FirstOrDefault();
+
+            return game;
+        }
     }
 }
