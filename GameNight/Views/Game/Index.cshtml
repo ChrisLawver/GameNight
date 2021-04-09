@@ -5,16 +5,32 @@
 @{
 }
 
+<section>
+    <form>
+        <h2>Game Gallery</h2>
+        <input id="search" type="search" placeholder="Search Game" />
+        <button id="gameSearch">Submit</button>
+    </form>
+</section>
+
+<div id="gameResult"></div>
 
 @foreach (var item in Model)
 {
     <div class="box">
         <div class="content">
             <h3>Name: <a href="/Game/Details/@item.Id">@item.Title</a></h3>
-            <a href="/Game/Update/@item.Id"><button id="sendBtn">Edit Game</button></a> <a href="/Game/Delete/@item.Id"><button id="sendBtn">Delete Game</button></a>
+            @*<a href="/Game/Update/@item.Id"><button id="editBtn" class="btn btn-primary">Edit Game</button></a> <a href="/Game/Delete/@item.Id"><button id="deleteBtn" class="btn btn-primary">Delete Game</button></a>*@
+            <a class="btn btn-primary" href="/Game/Update/@item.Id">Edit Game</a> <a class="btn btn-primary" href="/Game/Delete/@item.Id">Delete Game</a>
+
+
         </div>
     </div>
 }
 
 <h1><a href="/Game/Create"><button id="sendBtn">Add a game</button></a></h1>
 
+
+@section scripts{
+    <script src="~/js/getGame.js" asp-append-version="true"></script>
+}

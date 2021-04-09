@@ -63,5 +63,21 @@ namespace GameNight.Controllers
             gameRepo.Delete(game);
             return RedirectToAction("Index");
         }
+
+        public ActionResult CheckGame(string externalId, string name)
+        {
+            var game = new Game(); //add method to repo!
+            //check to see if game exists
+            if(game == null)
+            {
+                game = new Game();
+                game.Title = name;
+                //game.ExternalId = externalId;
+                //add game
+                gameRepo.Create(game);
+            }
+                return RedirectToAction("Details", new { id = game.Id});
+            
+        }
     }
 }

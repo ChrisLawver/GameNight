@@ -9,6 +9,7 @@ namespace GameNight.Models
     {
         public int Id { get; set; }
         public string Title { get; set; }
+        //public string ExternalId { get; set; }
 
         public virtual ICollection<UserGame> Players { get; set; }
         //Game.Players.User.Username
