@@ -73,5 +73,16 @@ namespace GameNight.Repositories
                 };
             }
         }
+
+        public bool CheckDuplicate(string username)
+        {
+            var user = db.Set<User>().Where(u => u.Username == username).FirstOrDefault();
+            if(user == null)
+            {
+                return false;
+            }
+            
+            return true;
+        }
     }
 }

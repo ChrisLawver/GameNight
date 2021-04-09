@@ -29,7 +29,7 @@ namespace GameNight.Controllers
             if (response.Result)
             {
                 HttpContext.Session.SetString("Username", response.User.Username);
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Details", "User", new { id = response.User.Id});
             }
             else
             {
@@ -46,9 +46,10 @@ namespace GameNight.Controllers
         [HttpPost]
         public ActionResult Register(User model)
         {
-            GameNightContext db = new GameNightContext();
-            db.Users.Add(model);
-            db.SaveChanges();
+            if (!userRepo.CheckDuplicate(model.Username))
+            {
+                userRepo.Create(model);
+            }
             return RedirectToAction("Index", "Home");
         }
     }

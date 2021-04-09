@@ -9,6 +9,7 @@ namespace GameNight.Extensions
     public interface IAccount
     {
         LoginResult CheckLogin(string username, string password);
+        bool CheckDuplicate(string username);
 
     }
     public class LoginResult
