@@ -51,6 +51,13 @@ namespace GameNight.Repositories
             return db.Set<Game>().ToList();
         }
 
+        public Game GetByExternalId(string externalId)
+        {
+            var game = db.Set<Game>().Where(g => g.ExternalId == externalId).FirstOrDefault();
+
+            return game;
+        }
+
         public LoginResult CheckLogin(string username, string password)
         {
             var user = db.Set<User>().Where(u => u.Username == username && u.Password == Helpers.Helper.EncryptPassword(password)).FirstOrDefault();
@@ -83,6 +90,7 @@ namespace GameNight.Repositories
             }
             
             return true;
+
         }
     }
 }

@@ -66,17 +66,18 @@ namespace GameNight.Controllers
 
         public ActionResult CheckGame(string externalId, string name)
         {
-            var game = new Game(); //add method to repo!
+            var game = gameRepo.GetByExternalId(externalId); //add method to repo!
             //check to see if game exists
             if(game == null)
             {
                 game = new Game();
                 game.Title = name;
-                //game.ExternalId = externalId;
+                game.ExternalId = externalId;
                 //add game
                 gameRepo.Create(game);
             }
-                return RedirectToAction("Details", new { id = game.Id});
+            
+            return RedirectToAction("Details", new { id = game.Id});
             
         }
     }

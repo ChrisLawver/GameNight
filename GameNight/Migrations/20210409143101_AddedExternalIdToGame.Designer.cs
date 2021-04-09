@@ -4,14 +4,16 @@ using GameNight;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace GameNight.Migrations
 {
     [DbContext(typeof(GameNightContext))]
-    partial class GameNightContextModelSnapshot : ModelSnapshot
+    [Migration("20210409143101_AddedExternalIdToGame")]
+    partial class AddedExternalIdToGame
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -51,8 +53,7 @@ namespace GameNight.Migrations
                             GameId = 1,
                             Location = "16-Bit",
                             Name = "Tournament",
-                            PlayedOn = new DateTime(2021, 4, 9, 11, 16, 46, 206, DateTimeKind.Local).AddTicks(9985)
-
+                            PlayedOn = new DateTime(2021, 4, 9, 10, 31, 0, 705, DateTimeKind.Local).AddTicks(592)
                         });
                 });
 
@@ -93,27 +94,16 @@ namespace GameNight.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Bio")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("FirstName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("LastName")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("Location")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Password")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ProfilePic")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Username")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");

@@ -9,5 +9,6 @@ namespace GameNight.Extensions
     public interface ISelectList
     {
         IEnumerable<Game> GetAllGames();
+        Game GetByExternalId(string externalId);
     }
 }
