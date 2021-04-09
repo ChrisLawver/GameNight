@@ -31,19 +31,19 @@ function gameAttributes(data) {
     let results = data.games;
     resultDisplay.innerHTML = "";
     results.forEach(result => {
-        var name;
-        var gameImg;
+        var name = result.name;
+        var gameImg = result.images.small;
         var gameId = result.id;
-        name = result.name;
-        gameImg = result.images.small;
-        ShowResults(name, gameImg, gameId);
+        var minPlayers = result.min_players;
+        var maxPlayers = result.max_players;
+        var description = result.description;
+        ShowResults(name, gameImg, gameId, minPlayers, maxPlayers, description);
     });
 }
 
-function ShowResults(name, gameImg, gameId) {
-
+function ShowResults(name, gameImg, gameId, minPlayers, maxPlayers, description) {
     let link = document.createElement("a");
-    link.href = `/Game/CheckGame?externalId=${gameId}&name=${name}`;
+    link.href = `/Game/CheckGame?externalId=${gameId}&name=${name}&image=${gameImg}&minPlayers=${minPlayers}&maxPlayers=${maxPlayers}&description=${description}`;
     let searchResult = document.createElement("h3");
     let searchResultImg = document.createElement("img");
     searchResult.innerText = name;

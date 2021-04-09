@@ -11,6 +11,12 @@ namespace GameNight.Models
         public string Title { get; set; }
         public string ExternalId { get; set; }
 
+        public string Image { get; set; }
+        public int MinPlayers { get; set; }
+        public int MaxPlayers { get; set; }
+        public string Description { get; set; }
+
+
         public virtual ICollection<UserGame> Players { get; set; }
         //Game.Players.User.Username
 
