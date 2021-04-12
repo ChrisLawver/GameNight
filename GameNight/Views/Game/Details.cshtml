@@ -5,27 +5,29 @@
 @{
 }
 
-    <div class="box">
-        <div class="content">
-            <h3>Name: <a href="/Game/Details/@Model.Id">@Model.Title</a></h3>
-            <img src="@Model.Image" />
+<div class="box">
+    <div class="content">
+        <h3 id="gameTitle">Name: <a href="/Game/Details/@Model.Id">@Model.Title</a></h3>
+        <img src="@Model.Image" />
 
-            @if (Model.MinPlayers < Model.MaxPlayers)
-            {
-                <p>Number of Players: @Model.MinPlayers - @Model.MaxPlayers</p>
-            }
-            else 
-            {
-               <p>Number of Players: @Model.MinPlayers</p> 
-            } 
-
-
-
-            @Model.Description
+        @if (Model.MinPlayers < Model.MaxPlayers)
+        {
+            <p>Number of Players: @Model.MinPlayers - @Model.MaxPlayers</p>
+        }
+        else
+        {
+            <p>Number of Players: @Model.MinPlayers</p>
+        }
 
 
-        </div>
+        <div id="description">@Model.Title</div>
+
     </div>
+</div>
 
-    @*<a href="/Game/Index/"><button class="btn btn-primary">Game Page</button></a>*@
-    <a class="btn btn-primary" href="/Game/Index/">Game Page</a>
+@*<a href="/Game/Index/"><button class="btn btn-primary">Game Page</button></a>*@
+<a class="btn btn-primary" href="/Game/Index/">Game Page</a>
+
+@section scripts{
+    <script src="~/js/gameDetails.js" asp-append-version="true"></script>
+}

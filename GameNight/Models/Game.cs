@@ -14,7 +14,7 @@ namespace GameNight.Models
         public string Image { get; set; }
         public int MinPlayers { get; set; }
         public int MaxPlayers { get; set; }
-        public string Description { get; set; }
+        //public string Description { get; set; }
 
 
         public virtual ICollection<UserGame> Players { get; set; }
