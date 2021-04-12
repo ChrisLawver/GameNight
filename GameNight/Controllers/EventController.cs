@@ -1,6 +1,7 @@
 ﻿using GameNight.Models;
 using GameNight.Repositories;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,10 +31,25 @@ namespace GameNight.Controllers
             return View(event1);
         }
 
-        public ViewResult Create()
+        //public ViewResult Create()
+        //{
+        //    ViewBag.Games = eventRepo.GetAllGames();
+        //    return View(new Event() { PlayedOn  = DateTime.Now });
+        //}
+        public ViewResult Create(int? gameId)
         {
-            ViewBag.Games = eventRepo.GetAllGames();
-            return View(new Event() { PlayedOn  = DateTime.Now });
+            var games = eventRepo.PopulateGameList();
+
+            ViewBag.Games = games;
+
+            if (gameId == null)
+            {
+                return View(new Event() { PlayedOn = DateTime.Now });
+            }
+            else
+            {
+                return View(new Event() { GameId = (int) gameId, PlayedOn = DateTime.Now });
+            }
         }
 
         [HttpPost]
