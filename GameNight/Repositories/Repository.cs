@@ -65,6 +65,13 @@ namespace GameNight.Repositories
             return games;
         }
 
+        public List<User> PopulateUserList()
+        {
+            var users = db.Set<User>().ToList();
+
+            return users;
+        }
+
         public LoginResult CheckLogin(string username, string password)
         {
             var user = db.Set<User>().Where(u => u.Username == username && u.Password == Helpers.Helper.EncryptPassword(password)).FirstOrDefault();
