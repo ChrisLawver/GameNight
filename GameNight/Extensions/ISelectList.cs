@@ -10,7 +10,6 @@ namespace GameNight.Extensions
     {
         IEnumerable<Game> GetAllGames();
         Game GetByExternalId(string externalId);
-
         List<Game> PopulateGameList();
     }
 }

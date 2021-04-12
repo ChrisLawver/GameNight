@@ -36,15 +36,6 @@ namespace GameNight.Controllers
             return View(new Game());
         }
 
-        public ViewResult CreateByGameId(int gameId)
-        {
-            var games = gameRepo.PopulateGameList();
-
-            ViewBag.Games = new SelectList(games, "Id", "Name");
-
-            return View(new Event() { GameId = gameId });
-        }
-
         [HttpPost]
         public ActionResult Create(Game model)
         {
