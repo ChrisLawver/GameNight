@@ -1,6 +1,7 @@
 ﻿using GameNight.Models;
 using GameNight.Repositories;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -33,6 +34,15 @@ namespace GameNight.Controllers
         public ViewResult Create()
         {
             return View(new Game());
+        }
+
+        public ViewResult CreateByGameId(int gameId)
+        {
+            var games = gameRepo.PopulateGameList();
+
+            ViewBag.Games = new SelectList(games, "Id", "Name");
+
+            return View(new Event() { GameId = gameId });
         }
 
         [HttpPost]
