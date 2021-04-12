@@ -6,15 +6,24 @@
 }
 
 
-    <div class="box">
-        <div class="content">
-            <h3>Name: @Model.Name</h3>
-            <p>Location: @Model.Location</p>
-            <p>Date: @Model.PlayedOn</p>
-        </div>
+<div class="box">
+    <div class="content">
+        <h3>Name: @Model.Name</h3>
+        <p>Location: @Model.Location</p>
+        <p>Date: @Model.PlayedOn</p>
     </div>
+</div>
 
-    <p>
-        <a class="btn btn-primary" href="/Event/Index/">Home Page</a>
-    </p>
+@foreach (var userEvent in Model.Attendees)
+{
+    <div>
+        @userEvent.User.Username
+    </div>
+}
+
+<a class="btn btn-primary" href="/UserEvent/Create/?eventId=@Model.Id">Add User to Event</a>
+
+
+    <a class="btn btn-primary" href="/Event/Index/">Home Page</a>
+
 
