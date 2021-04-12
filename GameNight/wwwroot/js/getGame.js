@@ -36,14 +36,13 @@ function gameAttributes(data) {
         var gameId = result.id;
         var minPlayers = result.min_players;
         var maxPlayers = result.max_players;
-        var description = result.description;
-        ShowResults(name, gameImg, gameId, minPlayers, maxPlayers, description);
+        ShowResults(name, gameImg, gameId, minPlayers, maxPlayers);
     });
 }
 
-function ShowResults(name, gameImg, gameId, minPlayers, maxPlayers, description) {
+function ShowResults(name, gameImg, gameId, minPlayers, maxPlayers) {
     let link = document.createElement("a");
-    link.href = `/Game/CheckGame?externalId=${gameId}&name=${name}&image=${gameImg}&minPlayers=${minPlayers}&maxPlayers=${maxPlayers}&description=${description}`;
+    link.href = `/Game/CheckGame?externalId=${gameId}&name=${name}&image=${gameImg}&minPlayers=${minPlayers}&maxPlayers=${maxPlayers}`;
     let searchResult = document.createElement("h3");
     let searchResultImg = document.createElement("img");
     searchResult.innerText = name;

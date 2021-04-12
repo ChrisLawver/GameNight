@@ -64,7 +64,7 @@ namespace GameNight.Controllers
             return RedirectToAction("Index");
         }
 
-        public ActionResult CheckGame(string externalId, string name, string image, int minPlayers, int maxPlayers, string description)
+        public ActionResult CheckGame(string externalId, string name, string image, int minPlayers, int maxPlayers)
         {
             var game = gameRepo.GetByExternalId(externalId); //add method to repo!
             //check to see if game exists
@@ -76,7 +76,6 @@ namespace GameNight.Controllers
                 game.Image = image;
                 game.MinPlayers = minPlayers;
                 game.MaxPlayers = maxPlayers;
-                game.Description = description;
                 //add game
                 gameRepo.Create(game);
             }
