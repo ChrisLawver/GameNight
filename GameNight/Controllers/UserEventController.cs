@@ -31,6 +31,7 @@ namespace GameNight.Controllers
             ViewBag.UserId = users;
 
             return View(new UserEvent() {EventId = eventId, Id = 0});
+            
         }
 
         [HttpPost]
@@ -38,9 +39,14 @@ namespace GameNight.Controllers
         {
             var users = userEventRepo.PopulateUserList();
             ViewBag.UserId = users;
-           
-            userEventRepo.Create(model);
-            return View(model);
+
+            if (!userEventRepo.CheckDuplicateUserEvent(model.UserId, model.EventId))
+            {
+                userEventRepo.Create(model);
+            }
+
+            return RedirectToAction("Details", "Event", new { id = model.EventId });
+
         }
 
         public ActionResult Delete(int id)

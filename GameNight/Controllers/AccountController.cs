@@ -52,7 +52,7 @@ namespace GameNight.Controllers
         [HttpPost]
         public ActionResult Register(User model)
         {
-            if (!userRepo.CheckDuplicate(model.Username))
+            if (!userRepo.CheckDuplicateUser(model.Username))
             {
                 userRepo.Create(model);
             }
