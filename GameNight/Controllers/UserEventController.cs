@@ -42,6 +42,15 @@ namespace GameNight.Controllers
             userEventRepo.Create(model);
             return View(model);
         }
+
+        public ActionResult Delete(int id)
+        {
+            var userEvent = userEventRepo.GetById(id);
+            int eventId = userEvent.EventId;
+            userEventRepo.Delete(userEvent);
+            return RedirectToAction("Details", "Event", new { id = eventId });
+        }
+
     }
 }
 

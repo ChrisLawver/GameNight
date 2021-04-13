@@ -10,6 +10,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc.Infrastructure;
 
 namespace GameNight
 {
@@ -32,6 +33,7 @@ namespace GameNight
             services.AddScoped<IRepository<User>, UserRepository>();
             services.AddScoped<IRepository<UserEvent>, UserEventRepository>();
             services.AddScoped<IRepository<UserGame>, UserGameRepository>();
+            services.AddHttpContextAccessor();
             services.AddDbContext<GameNightContext>();
             services.AddMvc();
         }
