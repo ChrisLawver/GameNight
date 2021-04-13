@@ -19,6 +19,9 @@
     <div>
         @userEvent.User.Username
     </div>
+    <div>
+        <a class="btn btn-primary" href ="/UserEvent/Delete/@userEvent.Id">Remove User From Event</a>
+    </div>
 }
 
 <a class="btn btn-primary" href="/UserEvent/Create/?eventId=@Model.Id">Add User to Event</a>

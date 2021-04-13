@@ -29,6 +29,7 @@ namespace GameNight.Controllers
             if (response.Result)
             {
                 HttpContext.Session.SetString("Username", response.User.Username);
+                HttpContext.Session.SetString("UserId", response.User.Id.ToString());
                 return RedirectToAction("Details", "User", new { id = response.User.Id});
             }
             else
@@ -36,6 +37,11 @@ namespace GameNight.Controllers
                 ViewBag.ResultMessage = response.Message;
                 return View(model);
             }
+        }
+        public ActionResult Logout()                   // We Need a Button for this
+        {
+            HttpContext.Session.Clear();
+            return RedirectToAction("Index", "Home");
         }
 
         public ViewResult Register()

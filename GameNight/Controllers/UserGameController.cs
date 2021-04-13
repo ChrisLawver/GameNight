@@ -43,5 +43,12 @@ namespace GameNight.Controllers
             int userId = model.UserId;
             return RedirectToAction("Details", "User", new { id = userId });
         }
+        public ActionResult Delete(int id)
+        {
+            var userGame = userGameRepo.GetById(id);
+            int userId = userGame.UserId;
+            userGameRepo.Delete(userGame);
+            return RedirectToAction("Details", "User", new { id = userId });
+        }
     }
 }

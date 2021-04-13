@@ -16,6 +16,9 @@
     <div>
         @userGame.Game.Title
     </div>
+    <div>
+        <a class="btn btn-primary" href="/UserGame/Delete/@userGame.Id">Remove From Favorites</a>
+    </div>
 }
 <button id="addFavorite"><a href="/UserGame/Create/?userId=@Model.Id">Add Favorite</a></button>
 <h3>@Model.Username's Events</h3>
