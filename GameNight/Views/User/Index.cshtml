@@ -4,7 +4,7 @@
 @foreach (var item in Model)
 {
     <div>
-        <h2>@item.Username</h2>
+        <h2><a href="/User/Details/@item.Id">@item.Username</a></h2>
     </div>
     <div>
         @item.Location

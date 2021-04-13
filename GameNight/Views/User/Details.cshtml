@@ -10,13 +10,14 @@
 <div>
     <img src="@Model.ProfilePic" />
 </div>
-<h3>@Model.Username's Games</h3>
+<h3>@Model.Username's Favorite Games</h3>
 @foreach (var userGame in Model.Games)
 {
     <div>
         @userGame.Game.Title
     </div>
 }
+<button id="addFavorite"><a href="/UserGame/Create/?userId=@Model.Id">Add Favorite</a></button>
 <h3>@Model.Username's Events</h3>
 @foreach (var userEvent in Model.Events)
 {
@@ -30,3 +31,4 @@
         @userEvent.Event.Location
     </div>
 }
+
