@@ -10,8 +10,7 @@ namespace GameNight.Extensions
     {
         LoginResult CheckLogin(string username, string password);
         bool CheckDuplicateUser(string username);
-        bool CheckDuplicateUserEvent(int userId, int eventId);
-        bool CheckDuplicateUserGame(int userId, int gameId);
+        
 
     }
     public class LoginResult

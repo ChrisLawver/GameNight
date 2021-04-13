@@ -58,6 +58,13 @@ namespace GameNight.Repositories
             return game;
         }
 
+        public Event GetEventById(int id)
+        {
+            var event1 = db.Set<Event>().Where(e => e.Id == id).FirstOrDefault();
+
+            return event1;
+        }
+
         public List<Game> PopulateGameList()
         {
             var games = db.Set<Game>().ToList();
@@ -130,6 +137,16 @@ namespace GameNight.Repositories
 
             return true;
 
+        }
+
+        public bool CheckMaxPlayers(int maxPlayers, IEnumerable<UserEvent> attendees)
+        {
+
+            if(attendees.Count() >= maxPlayers)
+            {
+                return false;
+            }
+            return true;
         }
     }
 }
