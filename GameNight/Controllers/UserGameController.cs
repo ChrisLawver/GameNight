@@ -23,5 +23,25 @@ namespace GameNight.Controllers
         {
             return View(userGameRepo.GetAll());
         }
+
+        public ViewResult Create(int userId)
+        {
+            var games = userGameRepo.PopulateGameList();
+
+            ViewBag.GameId = games;
+
+            return View(new UserGame() { UserId = userId, Id = 0 });
+        }
+
+        [HttpPost]
+        public ActionResult Create(UserGame model)
+        {
+            var games = userGameRepo.PopulateGameList();
+            ViewBag.GameId = games;
+
+            userGameRepo.Create(model);
+            int userId = model.UserId;
+            return RedirectToAction("Details", "User", new { id = userId });
+        }
     }
 }
