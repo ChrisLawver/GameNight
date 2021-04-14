@@ -1,4 +1,6 @@
 ﻿@model IEnumerable<GameNight.Models.Game>
+@using Microsoft.AspNetCore.Http
+@inject IHttpContextAccessor HttpContextAccessor
 @*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
@@ -20,17 +22,18 @@
     <div class="box">
         <div class="content">
             <h3>Name: <a href="/Game/Details/@item.Id">@item.Title</a></h3>
-            @*<a href="/Game/Update/@item.Id"><button id="editBtn" class="btn btn-primary">Edit Game</button></a> <a href="/Game/Delete/@item.Id"><button id="deleteBtn" class="btn btn-primary">Delete Game</button></a>*@
-            <a class="btn btn-primary" href="/Game/Update/@item.Id">Edit Game</a> <a class="btn btn-primary" href="/Game/Delete/@item.Id">Delete Game</a>
-            <a class="btn btn-primary" href="/Event/Create/?gameId=@item.Id">Create an Event</a>
 
+            @if (!String.IsNullOrEmpty(HttpContextAccessor.HttpContext.Session.GetString("UserId")))
+            {
+                <a class="btn btn-primary" href="/Game/Update/@item.Id">Edit Game</a> <a class="btn btn-primary" href="/Game/Delete/@item.Id">Delete Game</a>
+                <a class="btn btn-primary" href="/Event/Create/?gameId=@item.Id">Create an Event</a>
+            }
 
         </div>
     </div>
 }
 
 <a class="btn btn-primary" href="/Game/Create">Add a game</a>
-
 
 @section scripts{
     <script src="~/js/getGame.js" asp-append-version="true"></script>
