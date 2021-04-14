@@ -1,5 +1,7 @@
 ﻿@model GameNight.Models.User
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@using Microsoft.AspNetCore.Http
+@inject IHttpContextAccessor HttpContextAccessor
 
 <div>
     <h2>@Model.Username</h2>
@@ -10,18 +12,43 @@
 <div>
     <img src="@Model.ProfilePic" />
 </div>
-<h3>@Model.Username's Favorite Games</h3>
+
+@if (Convert.ToInt32(HttpContextAccessor.HttpContext.Session.GetString("UserId")) == Model.Id)
+{
+    <h3>Your Favorite Games</h3>
+}
+else
+{
+    <h3>@Model.Username's Favorite Games</h3>
+}
+
 @foreach (var userGame in Model.Games)
 {
     <div>
         @userGame.Game.Title
     </div>
     <div>
-        <a class="btn btn-primary" href="/UserGame/Delete/@userGame.Id">Remove From Favorites</a>
+        @if (Convert.ToInt32(HttpContextAccessor.HttpContext.Session.GetString("UserId")) == Model.Id)
+        {
+            <a class="btn btn-primary" href="/UserGame/Delete/@userGame.Id">Remove From Favorites</a>
+        }
     </div>
 }
-<button id="addFavorite"><a href="/UserGame/Create/?userId=@Model.Id">Add Favorite</a></button>
-<h3>@Model.Username's Events</h3>
+
+@if (Convert.ToInt32(HttpContextAccessor.HttpContext.Session.GetString("UserId")) == Model.Id)
+{
+    <button id="addFavorite"><a href="/UserGame/Create/?userId=@Model.Id">Add Favorite</a></button>
+}
+
+@if (Convert.ToInt32(HttpContextAccessor.HttpContext.Session.GetString("UserId")) == Model.Id)
+{
+    <h3>Your Events</h3>
+}
+else
+{
+    <h3>@Model.Username's Events</h3>
+}
+
 @foreach (var userEvent in Model.Events)
 {
     <div>
@@ -34,4 +61,10 @@
         @userEvent.Event.Location
     </div>
 }
+
+@if (Convert.ToInt32(HttpContextAccessor.HttpContext.Session.GetString("UserId")) == Model.Id)
+{
+    <a class="btn btn-primary" href="/User/Delete/@Model.Id">Delete Account</a>
+}
+
 
