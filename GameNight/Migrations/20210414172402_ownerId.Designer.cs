@@ -4,14 +4,16 @@ using GameNight;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace GameNight.Migrations
 {
     [DbContext(typeof(GameNightContext))]
-    partial class GameNightContextModelSnapshot : ModelSnapshot
+    [Migration("20210414172402_ownerId")]
+    partial class ownerId
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -25,9 +27,6 @@ namespace GameNight.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<bool>("Active")
-                        .HasColumnType("bit");
 
                     b.Property<int>("GameId")
                         .HasColumnType("int");
@@ -54,12 +53,11 @@ namespace GameNight.Migrations
                         new
                         {
                             Id = 1,
-                            Active = false,
                             GameId = 1,
                             Location = "16-Bit",
                             Name = "Tournament",
                             OwnerId = 0,
-                            PlayedOn = new DateTime(2021, 4, 14, 14, 28, 1, 453, DateTimeKind.Local).AddTicks(918)
+                            PlayedOn = new DateTime(2021, 4, 14, 13, 24, 1, 697, DateTimeKind.Local).AddTicks(7055)
                         });
                 });
 

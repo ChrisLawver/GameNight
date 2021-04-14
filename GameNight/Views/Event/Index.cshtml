@@ -13,6 +13,7 @@
     <div class="box">
         <div class="content">
             <h3>Name: <a href="/Event/Details/@item.Id">@item.Name</a></h3>
+            <p>@item.Game.Title</p>
             @if (!String.IsNullOrEmpty(HttpContextAccessor.HttpContext.Session.GetString("UserId")))
             {
                 <a class="btn btn-primary" href="/Event/Update/@item.Id">Update Event</a> <a class="btn btn-primary" href="/Event/Delete/@item.Id">Delete Event</a>
@@ -23,6 +24,7 @@
 
     @if (!String.IsNullOrEmpty(HttpContextAccessor.HttpContext.Session.GetString("UserId")))
      {
-        <a class="btn btn-primary" href="/Event/Create/">Create Event</a>
+           int ownerId = Convert.ToInt32(HttpContextAccessor.HttpContext.Session.GetString("UserId"));
+           <a class="btn btn-primary" href="/Event/Create/?OwnerId=@ownerId">Create Event</a>
      }
 

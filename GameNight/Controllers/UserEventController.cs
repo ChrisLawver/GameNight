@@ -40,10 +40,6 @@ namespace GameNight.Controllers
             var users = userEventRepo.PopulateUserList();
             ViewBag.UserId = users;
 
-            //int maxPlayers = model.Event.Game.MaxPlayers;
-            //int gameId = model.Event.GameId;
-            //var attendees = model.Event.Attendees;
-
             model.Event = userEventRepo.GetEventById(model.EventId);
 
             if (!userEventRepo.CheckDuplicateUserEvent(model.UserId, model.EventId) && userEventRepo.CheckMaxPlayers(model.Event.Game.MaxPlayers, model.Event.Attendees))

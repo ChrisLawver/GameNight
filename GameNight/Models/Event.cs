@@ -16,5 +16,7 @@ namespace GameNight.Models
         public virtual Game Game { get; set; }
 
         public virtual ICollection<UserEvent> Attendees { get; set; }
+        public int OwnerId { get; set; }
+        public bool Active { get; set; }
     }
 }

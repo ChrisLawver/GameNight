@@ -13,8 +13,15 @@
         <h3>Name: @Model.Name</h3>
         <p>Location: @Model.Location</p>
         <p>Date: @Model.PlayedOn</p>
+        <p>Game: @Model.Game.Title</p>
     </div>
 </div>
+@if (Convert.ToInt32(HttpContextAccessor.HttpContext.Session.GetString("UserId")) == Model.OwnerId)
+{
+    <a class="btn btn-primary" href="/Event/Update/@Model.Id">Edit Event</a>
+    <a class="btn btn-primary" href="/Event/Close/@Model.Id">Close Event</a>
+}
+
 
 @foreach (var userEvent in Model.Attendees)
 {

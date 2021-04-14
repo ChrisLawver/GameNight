@@ -1,0 +1,70 @@
+﻿@model GameNight.Models.Event
+
+@{
+    ViewData["Title"] = "Close";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Close</h1>
+
+<h4>Event</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        @*<form asp-action="Close">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <input type="hidden" asp-for="Id" />
+        <input class="form-control" type="hidden" asp-for="Name" />
+        <input class="form-control" type="hidden" asp-for="PlayedOn" />
+        <input class="form-control" type="hidden" asp-for="Location" />
+        <input class="form-control" type="hidden" asp-for="GameId" />
+        <input class="form-control" type="hidden" asp-for="OwnerId" />*@
+
+        @*<div class="form-group">
+            <label asp-for="Name" class="control-label"></label>
+            <input asp-for="Name" class="form-control" />
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="PlayedOn" class="control-label"></label>
+            <input asp-for="PlayedOn" class="form-control" />
+            <span asp-validation-for="PlayedOn" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Location" class="control-label"></label>
+            <input asp-for="Location" class="form-control" />
+            <span asp-validation-for="Location" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="GameId" class="control-label"></label>
+            <select asp-for="GameId" class="form-control" asp-items="ViewBag.GameId"></select>
+            <span asp-validation-for="GameId" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="OwnerId" class="control-label"></label>
+            <input asp-for="OwnerId" class="form-control" />
+            <span asp-validation-for="OwnerId" class="text-danger"></span>
+        </div>*@
+        @foreach (var item in Model.Attendees)
+        {
+            <form asp-action="Close">
+                <input type="hidden" asp-for="@item.Id" />
+                <input type="hidden" asp-for="@item.EventId" />
+                <p>Did @item.User.Username win?</p>
+                <input type="checkbox" asp-for="@item.IsWin" />
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+            </form>
+        }
+        @*</form>*@
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

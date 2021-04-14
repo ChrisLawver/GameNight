@@ -13,5 +13,6 @@ namespace GameNight.Extensions
         Game GetByExternalId(string externalId);
         bool CheckMaxPlayers(int maxPlayers, IEnumerable<UserEvent> attendees);
         Event GetEventById(int id);
+        List<UserEvent> GetAttendees(int id);
     }
 }

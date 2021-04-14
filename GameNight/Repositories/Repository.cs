@@ -65,6 +65,13 @@ namespace GameNight.Repositories
             return event1;
         }
 
+        public List<UserEvent> GetAttendees(int id)
+        {
+            var attendees = db.Set<UserEvent>().Where(e => e.EventId == id).ToList();
+
+            return attendees;
+        }
+
         public List<Game> PopulateGameList()
         {
             var games = db.Set<Game>().ToList();
