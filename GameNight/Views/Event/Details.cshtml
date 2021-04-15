@@ -14,6 +14,7 @@
         <p>Location: @Model.Location</p>
         <p>Date: @Model.PlayedOn</p>
         <p>Game: @Model.Game.Title</p>
+        <p>Created by: @Model.Owner</p>
     </div>
 </div>
 @if (Convert.ToInt32(HttpContextAccessor.HttpContext.Session.GetString("UserId")) == Model.OwnerId)

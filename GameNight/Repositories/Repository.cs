@@ -65,6 +65,13 @@ namespace GameNight.Repositories
             return event1;
         }
 
+        public string GetUserById(int id)
+        {
+            var user = db.Set<User>().Where(u => u.Id == id).FirstOrDefault();
+
+            return user.Username;
+        }
+
         public List<UserEvent> GetAttendees(int id)
         {
             var attendees = db.Set<UserEvent>().Where(e => e.EventId == id).ToList();

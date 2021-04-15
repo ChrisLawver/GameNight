@@ -36,15 +36,17 @@ namespace GameNight.Controllers
         {
             var games = eventRepo.PopulateGameList();
 
+            string owner = eventRepo.GetUserById(ownerId);
+
             ViewBag.Games = games;
 
             if (gameId == null)
             {
-                return View(new Event() { OwnerId = ownerId, PlayedOn = DateTime.Now });
+                return View(new Event() { OwnerId = ownerId, Owner = owner, PlayedOn = DateTime.Now, Active = true });
             }
             else
             {
-                return View(new Event() { GameId = (int) gameId, OwnerId = ownerId, PlayedOn = DateTime.Now });
+                return View(new Event() { GameId = (int) gameId, OwnerId = ownerId, Owner = owner, PlayedOn = DateTime.Now, Active = true });
             }
         }
 

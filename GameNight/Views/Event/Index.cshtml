@@ -14,7 +14,8 @@
         <div class="content">
             <h3>Name: <a href="/Event/Details/@item.Id">@item.Name</a></h3>
             <p>@item.Game.Title</p>
-            @if (!String.IsNullOrEmpty(HttpContextAccessor.HttpContext.Session.GetString("UserId")))
+            <p>Created by: @item.Owner</p>
+            @if (Convert.ToInt32(HttpContextAccessor.HttpContext.Session.GetString("UserId")) == item.OwnerId)
             {
                 <a class="btn btn-primary" href="/Event/Update/@item.Id">Update Event</a> <a class="btn btn-primary" href="/Event/Delete/@item.Id">Delete Event</a>
             }
