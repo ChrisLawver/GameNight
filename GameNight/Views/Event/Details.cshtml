@@ -16,7 +16,7 @@
         <p>Created by: @Model.Owner</p>
     </div>
 </div>
-@if (Convert.ToInt32(HttpContextAccessor.HttpContext.Session.GetString("UserId")) == Model.OwnerId)
+@if (Convert.ToInt32(HttpContextAccessor.HttpContext.Session.GetString("UserId")) == Model.OwnerId && Model.Active)
 {
     <a class="btn btn-primary" href="/Event/Update/@Model.Id">Edit Event</a>
     <a class="btn btn-primary" href="/Event/Close/@Model.Id">Close Event</a>
@@ -25,18 +25,33 @@
 
 @foreach (var userEvent in Model.Attendees)
 {
-    <div>
-        <a href="/User/Details/@userEvent.UserId">@userEvent.User.Username</a>
+<div>
+    <a href="/User/Details/@userEvent.UserId">@userEvent.User.Username</a>
+    @if (!Model.Active)
+    {
+        @if (userEvent.IsWin)
+        {
+            <h6>Winner</h6>
+        }
+        else
+        {
+            <h6>Loser</h6>
+        }
+    }
+
 </div>
+    
+
+
     <div>
-        @if (!String.IsNullOrEmpty(HttpContextAccessor.HttpContext.Session.GetString("UserId")))
+        @if (!String.IsNullOrEmpty(HttpContextAccessor.HttpContext.Session.GetString("UserId")) && Model.Active)
         {
             <a class="btn btn-primary" href="/UserEvent/Delete/@userEvent.Id">Remove User From Event</a>
         }
     </div>
 }
 
-@if (!String.IsNullOrEmpty(HttpContextAccessor.HttpContext.Session.GetString("UserId")))
+@if (!String.IsNullOrEmpty(HttpContextAccessor.HttpContext.Session.GetString("UserId")) && Model.Active)
 {
     <a class="btn btn-primary" href="/UserEvent/Create/?eventId=@Model.Id">Add User to Event</a>
 }
