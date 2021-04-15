@@ -3,14 +3,22 @@
 @using Microsoft.AspNetCore.Http
 @inject IHttpContextAccessor HttpContextAccessor
 
+
 <div>
     <h2>@Model.Username</h2>
+    <div>
+        <img src="@Model.ProfilePic" />
+    </div>
+    <br />
+    <h3>@Model.FirstName @Model.LastName</h3>
 </div>
 <div>
+    <h5>Bio: </h5>
+    <p>@Model.Bio</p>
+</div>
+<div>
+    <h5>Location: </h5>
     @Model.Location
-</div>
-<div>
-    <img src="@Model.ProfilePic" />
 </div>
 
 @if (Convert.ToInt32(HttpContextAccessor.HttpContext.Session.GetString("UserId")) == Model.Id)
@@ -65,6 +73,7 @@ else
 @if (Convert.ToInt32(HttpContextAccessor.HttpContext.Session.GetString("UserId")) == Model.Id)
 {
     <a class="btn btn-primary" href="/User/Delete/@Model.Id">Delete Account</a>
-}
+    <a class="btn btn-primary" href="/User/Update/@Model.Id">Update Account</a>
 
+}
 

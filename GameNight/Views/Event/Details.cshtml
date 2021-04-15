@@ -7,7 +7,6 @@
 @{
 }
 
-
 <div class="box">
     <div class="content">
         <h3>Name: @Model.Name</h3>
@@ -19,8 +18,8 @@
 @foreach (var userEvent in Model.Attendees)
 {
     <div>
-        @userEvent.User.Username
-    </div>
+        <a href="/User/Details/@userEvent.UserId">@userEvent.User.Username</a>
+</div>
     <div>
         @if (!String.IsNullOrEmpty(HttpContextAccessor.HttpContext.Session.GetString("UserId")))
         {
@@ -36,6 +35,6 @@
 
 
 
-<a class="btn btn-primary" href="/Event/Index/">Home Page</a>
+<a class="btn btn-primary" href="/Event/Index/">Event Board</a>
 
 

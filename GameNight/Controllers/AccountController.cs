@@ -54,9 +54,13 @@ namespace GameNight.Controllers
         {
             if (!userRepo.CheckDuplicateUser(model.Username))
             {
+                if (String.IsNullOrEmpty(model.ProfilePic))
+                {
+                    model.ProfilePic = "/images/gamepiece_icon.png";
+                }
                 userRepo.Create(model);
             }
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Login", "Account");
         }
     }
 }
