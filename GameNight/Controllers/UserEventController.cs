@@ -40,10 +40,6 @@ namespace GameNight.Controllers
             var users = userEventRepo.PopulateUserList();
             ViewBag.UserId = users;
 
-            //int maxPlayers = model.Event.Game.MaxPlayers;
-            //int gameId = model.Event.GameId;
-            //var attendees = model.Event.Attendees;
-
             model.Event = userEventRepo.GetEventById(model.EventId);
 
             if (!userEventRepo.CheckDuplicateUserEvent(model.UserId, model.EventId) && userEventRepo.CheckMaxPlayers(model.Event.Game.MaxPlayers, model.Event.Attendees))
@@ -53,6 +49,22 @@ namespace GameNight.Controllers
 
             return RedirectToAction("Details", "Event", new { id = model.EventId });
 
+        }
+
+        public ViewResult Close(int id)
+        {
+            var userEvent = userEventRepo.GetById(id);
+
+            return View(userEvent);
+        }
+
+        [HttpPost]
+        public ActionResult Close(UserEvent model)
+        {
+
+            userEventRepo.Update(model);
+
+            return RedirectToAction("Close", "Event", new { id = model.EventId });
         }
 
         public ActionResult Delete(int id)

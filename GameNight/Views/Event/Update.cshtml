@@ -13,6 +13,10 @@
     <div class="col-md-4">
         <form asp-action="Update">
             <div class="text-success">@ViewBag.Result</div>
+            <input class="form-control" type="hidden" asp-for="OwnerId" />
+            <input class="form-control" type="hidden" asp-for="Active" />
+            <input class="form-control" type="hidden" asp-for="Owner" />
+
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Id" />
             <div class="form-group">
@@ -43,7 +47,7 @@
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a href="/Event/Update/@Model.Id">Back to List</a>
 </div>
 
 @section Scripts {

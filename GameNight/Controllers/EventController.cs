@@ -1,5 +1,6 @@
 ﻿using GameNight.Models;
 using GameNight.Repositories;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
@@ -31,24 +32,21 @@ namespace GameNight.Controllers
             return View(event1);
         }
 
-        //public ViewResult Create()
-        //{
-        //    ViewBag.Games = eventRepo.GetAllGames();
-        //    return View(new Event() { PlayedOn  = DateTime.Now });
-        //}
-        public ViewResult Create(int? gameId)
+        public ViewResult Create(int? gameId, int ownerId)
         {
             var games = eventRepo.PopulateGameList();
+
+            string owner = eventRepo.GetUserById(ownerId);
 
             ViewBag.Games = games;
 
             if (gameId == null)
             {
-                return View(new Event() { PlayedOn = DateTime.Now });
+                return View(new Event() { OwnerId = ownerId, Owner = owner, PlayedOn = DateTime.Now, Active = true });
             }
             else
             {
-                return View(new Event() { GameId = (int) gameId, PlayedOn = DateTime.Now });
+                return View(new Event() { GameId = (int) gameId, OwnerId = ownerId, Owner = owner, PlayedOn = DateTime.Now, Active = true });
             }
         }
 
@@ -76,6 +74,25 @@ namespace GameNight.Controllers
             ViewBag.Result = "You have successfully updated an Event!";
             return View(model);
         }
+
+        public ViewResult Close(int id)
+        {
+            var event1 = eventRepo.GetById(id);
+            return View(event1);
+        }
+
+        //[HttpPost]
+        //public ActionResult Close(UserEvent model)
+        //{
+        //    GameNightContext db = new GameNightContext();
+        //    var userEvent = db.UserEvents.Find(model.Id);
+        //    userEvent.IsWin = model.IsWin;
+        //    db.SaveChanges();
+        //    //userEventRepo.Update(model);
+        //    ViewBag.Result = "You have successfully closed this Event!";
+        //    model.Event.Attendees = eventRepo.GetAttendees(model.EventId);
+        //    return RedirectToAction("Close", new { id = model.EventId });
+        //}
 
         public ActionResult Delete(int id)
         {

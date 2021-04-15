@@ -1,0 +1,35 @@
+﻿@model GameNight.Models.Event
+
+@{
+    ViewData["Title"] = "Close";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Close</h1>
+
+<h4>Event</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        @foreach (var item in Model.Attendees)
+        {
+                @*<input type="hidden" asp-for="@item.Id" />
+                <input type="hidden" asp-for="@item.EventId" />*@
+                <p>Did @item.User.Username win?</p>
+                @*<input type="checkbox" asp-for="@item.IsWin" />*@
+                <p>@item.IsWin</p>
+                @*<div class="form-group">
+                    <input type="submit" value="Save" class="btn btn-primary" />
+                </div>*@
+            <a class="btn btn-primary" href="/UserEvent/Close/@item.Id">Resolve Player Outcome</a>
+        }
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

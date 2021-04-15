@@ -4,14 +4,16 @@ using GameNight;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace GameNight.Migrations
 {
     [DbContext(typeof(GameNightContext))]
-    partial class GameNightContextModelSnapshot : ModelSnapshot
+    [Migration("20210414172402_ownerId")]
+    partial class ownerId
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -26,9 +28,6 @@ namespace GameNight.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<bool>("Active")
-                        .HasColumnType("bit");
-
                     b.Property<int>("GameId")
                         .HasColumnType("int");
 
@@ -36,9 +35,6 @@ namespace GameNight.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Owner")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("OwnerId")
@@ -57,12 +53,11 @@ namespace GameNight.Migrations
                         new
                         {
                             Id = 1,
-                            Active = false,
                             GameId = 1,
                             Location = "16-Bit",
                             Name = "Tournament",
                             OwnerId = 0,
-                            PlayedOn = new DateTime(2021, 4, 15, 11, 20, 3, 807, DateTimeKind.Local).AddTicks(4242)
+                            PlayedOn = new DateTime(2021, 4, 14, 13, 24, 1, 697, DateTimeKind.Local).AddTicks(7055)
                         });
                 });
 
