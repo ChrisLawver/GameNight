@@ -56,11 +56,11 @@ namespace GameNight.Controllers
             {
                 if (String.IsNullOrEmpty(model.ProfilePic))
                 {
-                    model.ProfilePic = "/images/defaultprofile.jpg";
+                    model.ProfilePic = "/images/gamepiece_icon.png";
                 }
                 userRepo.Create(model);
             }
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Login", "Account");
         }
     }
 }
