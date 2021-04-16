@@ -11,7 +11,7 @@
     <form>
         <h2>Game Gallery</h2>
         <input id="search" type="search" placeholder="Search Game" />
-        <button id="gameSearch">Submit</button>
+        <button class="btn btn-primary" id="gameSearch">Submit</button>
     </form>
 </section>
 
@@ -21,19 +21,18 @@
 {
     <div class="box">
         <div class="content">
-            <h3>Name: <a href="/Game/Details/@item.Id">@item.Title</a></h3>
+            <h3><a href="/Game/Details/@item.Id">@item.Title</a></h3>
+            <img src="@item.Image" />
 
             @if (!String.IsNullOrEmpty(HttpContextAccessor.HttpContext.Session.GetString("UserId")))
             {
-                <a class="btn btn-primary" href="/Game/Update/@item.Id">Edit Game</a> <a class="btn btn-primary" href="/Game/Delete/@item.Id">Delete Game</a>
+                <a class="btn btn-primary" href="/Game/Delete/@item.Id">Remove from Gallery</a>
                 <a class="btn btn-primary" href="/Event/Create/?gameId=@item.Id">Create an Event</a>
             }
 
         </div>
     </div>
 }
-
-<a class="btn btn-primary" href="/Game/Create">Add a game</a>
 
 @section scripts{
     <script src="~/js/getGame.js" asp-append-version="true"></script>

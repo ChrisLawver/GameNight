@@ -17,7 +17,15 @@
             <input type="hidden" asp-for="@item.EventId" />*@
             <p>Did @item.User.Username win?</p>
             @*<input type="checkbox" asp-for="@item.IsWin" />*@
-            <p>@item.IsWin</p>
+            @if(item.IsWin)
+            {
+                <p>Winner!</p>
+            }
+            else if(!item.Active)
+            {
+                <p>Loser :(</p>
+            }
+
             @*<div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />
             </div>*@

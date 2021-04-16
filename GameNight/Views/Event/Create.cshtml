@@ -23,7 +23,7 @@
                 <span asp-validation-for="Name" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="PlayedOn" class="control-label"></label>
+                <label asp-for="PlayedOn" class="control-label">Date of Event: </label>
                 <input asp-for="PlayedOn" class="form-control" />
                 <span asp-validation-for="PlayedOn" class="text-danger"></span>
             </div>
@@ -33,7 +33,7 @@
                 <span asp-validation-for="Location" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="GameId" class="control-label"></label>
+                <label asp-for="GameId" class="control-label">Game: </label>
                 <select asp-for="GameId" class="form-control" asp-items="@(new SelectList(ViewBag.Games,"Id","Title"))"></select>
             </div>
             <div class="form-group">
