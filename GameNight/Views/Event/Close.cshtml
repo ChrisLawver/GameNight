@@ -5,9 +5,9 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Close</h1>
+<h1>Close Out Event</h1>
 
-<h4>Event</h4>
+<h4>Event has concluded. Enter final results.</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -40,7 +40,7 @@
                 <input type="hidden" asp-for="@Model.GameId" />
                 <input type="hidden" asp-for="@Model.Name" />
 
-                <input type="submit" value="CloseEvent" class="btn btn-primary" />
+                <input type="submit" value="Close Event" class="btn btn-primary" />
 
             </form>
 
@@ -49,9 +49,6 @@
     </div>
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
