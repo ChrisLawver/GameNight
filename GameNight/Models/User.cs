@@ -10,6 +10,8 @@ namespace GameNight.Models
     public class User
     {
         private string _password;
+        private int win;
+        private int lose;
  
         public int Id { get; set; }
         [Required]
@@ -33,6 +35,30 @@ namespace GameNight.Models
         public string ProfilePic { get; set; }
         public string Location { get; set; }
         public string Bio { get; set; }
+        public int Win
+        {
+            get
+            {
+                return win;
+            }
+            set
+            {
+                
+                win = this.Events.Where(e => e.IsWin == true).Count();
+            }
+        }
+        public int Lose
+        {
+            get
+            {
+                return lose;
+            }
+            set
+            {
+                lose = this.Events.Where(e => e.IsWin == false).Count();
+                
+            }
+        }
 
         public virtual ICollection<UserEvent> Events { get; set; }
         //User.Events
