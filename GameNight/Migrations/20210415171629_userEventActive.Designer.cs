@@ -4,14 +4,16 @@ using GameNight;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace GameNight.Migrations
 {
     [DbContext(typeof(GameNightContext))]
-    partial class GameNightContextModelSnapshot : ModelSnapshot
+    [Migration("20210415171629_userEventActive")]
+    partial class userEventActive
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -62,9 +64,7 @@ namespace GameNight.Migrations
                             Location = "16-Bit",
                             Name = "Tournament",
                             OwnerId = 0,
-
-                            PlayedOn = new DateTime(2021, 4, 16, 10, 26, 49, 653, DateTimeKind.Local).AddTicks(8679)
-
+                            PlayedOn = new DateTime(2021, 4, 15, 13, 16, 28, 543, DateTimeKind.Local).AddTicks(6200)
                         });
                 });
 
@@ -130,9 +130,6 @@ namespace GameNight.Migrations
                     b.Property<string>("Location")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("Lose")
-                        .HasColumnType("int");
-
                     b.Property<string>("Password")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -144,9 +141,6 @@ namespace GameNight.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("Win")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
 
                     b.ToTable("Users");
@@ -156,21 +150,17 @@ namespace GameNight.Migrations
                         {
                             Id = 1,
                             Location = "Mushroom Kingdom",
-                            Lose = 0,
                             Password = "password",
                             ProfilePic = "https://cdn.vox-cdn.com/thumbor/QyaLYNjgXHUP4aQjxDsyG_Gw9w0=/0x0:1700x960/1075x1075/filters:focal(714x344:986x616):format(webp)/cdn.vox-cdn.com/uploads/chorus_image/image/57514059/mario.0.jpg",
-                            Username = "mario",
-                            Win = 0
+                            Username = "mario"
                         },
                         new
                         {
                             Id = 2,
                             Location = "Mushroom Kingdom",
-                            Lose = 0,
                             Password = "password2",
                             ProfilePic = "https://play.nintendo.com/images/Masthead_luigi.17345b1513ac044897cfc243542899dce541e8dc.9afde10b.png",
-                            Username = "luigi",
-                            Win = 0
+                            Username = "luigi"
                         });
                 });
 

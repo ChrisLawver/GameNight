@@ -30,7 +30,7 @@ namespace GameNight.Controllers
 
             ViewBag.UserId = users;
 
-            return View(new UserEvent() {EventId = eventId, Id = 0});
+            return View(new UserEvent() {EventId = eventId, Id = 0, Active = true});
             
         }
 
@@ -61,7 +61,7 @@ namespace GameNight.Controllers
         [HttpPost]
         public ActionResult Close(UserEvent model)
         {
-
+            model.Active = false;
             userEventRepo.Update(model);
 
             return RedirectToAction("Close", "Event", new { id = model.EventId });

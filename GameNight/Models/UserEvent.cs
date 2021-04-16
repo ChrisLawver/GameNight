@@ -17,5 +17,7 @@ namespace GameNight.Models
 
         //Good place to put the score of a specific user on a specific game
         public bool IsWin { get; set; }
+
+        public bool Active { get; set; }
     }
 }
