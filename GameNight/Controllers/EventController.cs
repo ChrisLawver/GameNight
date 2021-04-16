@@ -29,6 +29,7 @@ namespace GameNight.Controllers
         public ViewResult Details(int id)
         {
             var event1 = eventRepo.GetById(id);
+
             return View(event1);
         }
 
@@ -81,18 +82,13 @@ namespace GameNight.Controllers
             return View(event1);
         }
 
-        //[HttpPost]
-        //public ActionResult Close(UserEvent model)
-        //{
-        //    GameNightContext db = new GameNightContext();
-        //    var userEvent = db.UserEvents.Find(model.Id);
-        //    userEvent.IsWin = model.IsWin;
-        //    db.SaveChanges();
-        //    //userEventRepo.Update(model);
-        //    ViewBag.Result = "You have successfully closed this Event!";
-        //    model.Event.Attendees = eventRepo.GetAttendees(model.EventId);
-        //    return RedirectToAction("Close", new { id = model.EventId });
-        //}
+        [HttpPost]
+        public ActionResult Close(Event model)
+        {
+            model.Active = false;
+            eventRepo.Update(model);
+            return RedirectToAction("Details", "Event", new { id = model.Id });
+        }
 
         public ActionResult Delete(int id)
         {

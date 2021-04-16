@@ -13,6 +13,7 @@
         <form asp-action="Create">
             <input class="form-control" type="hidden" asp-for="EventId" />
             <input class="form-control" type="hidden" asp-for="Id" />
+            <input class="form-control" type="hidden" asp-for="Active" />
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="UserId" class="control-label"></label>
