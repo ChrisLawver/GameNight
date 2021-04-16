@@ -73,7 +73,8 @@ namespace GameNight.Controllers
             ViewBag.Games = eventRepo.GetAllGames();
             eventRepo.Update(model);
             ViewBag.Result = "You have successfully updated an Event!";
-            return View(model);
+            return RedirectToAction("Details", "Event", new { id = model.Id });
+
         }
 
         public ViewResult Close(int id)

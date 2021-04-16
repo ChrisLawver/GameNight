@@ -45,9 +45,10 @@ function ShowResults(name, gameImg, gameId, minPlayers, maxPlayers) {
     link.href = `/Game/CheckGame?externalId=${gameId}&name=${name}&image=${gameImg}&minPlayers=${minPlayers}&maxPlayers=${maxPlayers}`;
     let searchResult = document.createElement("h3");
     let searchResultImg = document.createElement("img");
-    searchResult.innerText = name;
+    searchResult.innerHTML = `Add <strong>${name}</strong> to Gallery`;
     searchResultImg.src = gameImg;
     link.appendChild(searchResult);
     link.appendChild(searchResultImg);
     resultDisplay.appendChild(link);
 }
+

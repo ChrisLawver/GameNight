@@ -50,7 +50,7 @@ else
 
 @if (Convert.ToInt32(HttpContextAccessor.HttpContext.Session.GetString("UserId")) == Model.Id)
 {
-    <button id="addFavorite"><a href="/UserGame/Create/?userId=@Model.Id">Add Favorite</a></button>
+    <a class="btn btn-primary"href="/UserGame/Create/?userId=@Model.Id">Add Favorite</a>
 }
 
 @if (Convert.ToInt32(HttpContextAccessor.HttpContext.Session.GetString("UserId")) == Model.Id)

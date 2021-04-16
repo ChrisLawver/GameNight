@@ -5,9 +5,9 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Close</h1>
+<h1>Close Out Event</h1>
 
-<h4>Event</h4>
+<h4>Event has concluded. Enter final results.</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -17,7 +17,15 @@
             <input type="hidden" asp-for="@item.EventId" />*@
             <p>Did @item.User.Username win?</p>
             @*<input type="checkbox" asp-for="@item.IsWin" />*@
-            <p>@item.IsWin</p>
+            @if(item.IsWin)
+            {
+                <p>Winner!</p>
+            }
+            else if(!item.Active)
+            {
+                <p>Loser :(</p>
+            }
+
             @*<div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />
             </div>*@
@@ -40,7 +48,7 @@
                 <input type="hidden" asp-for="@Model.GameId" />
                 <input type="hidden" asp-for="@Model.Name" />
 
-                <input type="submit" value="CloseEvent" class="btn btn-primary" />
+                <input type="submit" value="Close Event" class="btn btn-primary" />
 
             </form>
 
@@ -49,9 +57,6 @@
     </div>
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

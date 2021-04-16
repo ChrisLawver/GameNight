@@ -39,23 +39,36 @@ namespace GameNight.Models
         {
             get
             {
-                return win;
+                if(this.Events != null)
+                {
+                return this.Events.Where(e => e.IsWin == true).Count();
+                }
+                else
+                {
+                    return 0;
+                }
             }
             set
             {
-                
-                win = this.Events.Where(e => e.IsWin == true).Count();
+                win = this.Events.Count();
             }
         }
         public int Lose
         {
             get
             {
-                return lose;
+                if (this.Events != null)
+                {
+                    return this.Events.Count()- Win;
+                }
+                else
+                {
+                    return 0;
+                }
             }
             set
             {
-                lose = this.Events.Where(e => e.IsWin == false).Count();
+                lose = this.Events.Count();
                 
             }
         }
