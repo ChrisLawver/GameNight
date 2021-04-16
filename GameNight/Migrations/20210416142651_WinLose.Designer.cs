@@ -4,14 +4,16 @@ using GameNight;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace GameNight.Migrations
 {
     [DbContext(typeof(GameNightContext))]
-    partial class GameNightContextModelSnapshot : ModelSnapshot
+    [Migration("20210416142651_WinLose")]
+    partial class WinLose
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -62,9 +64,7 @@ namespace GameNight.Migrations
                             Location = "16-Bit",
                             Name = "Tournament",
                             OwnerId = 0,
-
                             PlayedOn = new DateTime(2021, 4, 16, 10, 26, 49, 653, DateTimeKind.Local).AddTicks(8679)
-
                         });
                 });
 
@@ -181,9 +181,6 @@ namespace GameNight.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<bool>("Active")
-                        .HasColumnType("bit");
-
                     b.Property<int>("EventId")
                         .HasColumnType("int");
 
@@ -205,7 +202,6 @@ namespace GameNight.Migrations
                         new
                         {
                             Id = 1,
-                            Active = false,
                             EventId = 1,
                             IsWin = true,
                             UserId = 1
@@ -213,7 +209,6 @@ namespace GameNight.Migrations
                         new
                         {
                             Id = 2,
-                            Active = false,
                             EventId = 1,
                             IsWin = false,
                             UserId = 2

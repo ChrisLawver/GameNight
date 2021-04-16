@@ -20,6 +20,11 @@
     <h5>Location: </h5>
     @Model.Location
 </div>
+<div>
+    <h5>Wins/Losses</h5>
+    <p> @Model.Win - @Model.Lose</p>  
+
+</div>
 
 @if (Convert.ToInt32(HttpContextAccessor.HttpContext.Session.GetString("UserId")) == Model.Id)
 {
