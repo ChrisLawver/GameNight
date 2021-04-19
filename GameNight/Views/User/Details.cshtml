@@ -23,7 +23,8 @@
 <div>
     <h5>Wins/Losses</h5>
     <p> @Model.Win - @Model.Lose</p>  
-
+    <p>Win Percentage</p>
+    <p>@Model.WinPercent%</p>
 </div>
 
 @if (Convert.ToInt32(HttpContextAccessor.HttpContext.Session.GetString("UserId")) == Model.Id)
