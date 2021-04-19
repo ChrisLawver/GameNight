@@ -17,7 +17,11 @@
 
 <div id="gameResult"></div>
 
-@foreach (var item in Model)
+@{
+    List<Game> orderedList = Model.OrderBy(x => x.Title).ToList();
+}
+
+@foreach (var item in orderedList)
 {
     <div class="box">
         <div class="content">

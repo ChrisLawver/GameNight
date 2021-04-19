@@ -62,5 +62,12 @@ namespace GameNight.Controllers
             userRepo.Delete(user);
             return RedirectToAction("Index");
         }
+
+        public ViewResult Leaderboard()
+        {
+            var userList = userRepo.GetAll();
+            userList.OrderBy(x => x.WinPercent).ToList();
+            return View(userList);
+        }
     }
 }
