@@ -47,7 +47,7 @@
     <div>
         @if (!String.IsNullOrEmpty(HttpContextAccessor.HttpContext.Session.GetString("UserId")) && Model.Active)
         {
-            <a class="btn btn-primary" href="/UserEvent/Delete/@userEvent.Id">Remove Player From Event</a>
+            <a class="btn btn-primary" href="/UserEvent/Delete/@userEvent.Id">Remove Player from Event</a>
         }
     </div>
 }
