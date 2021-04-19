@@ -12,6 +12,7 @@ namespace GameNight.Models
         private string _password;
         private int win;
         private int lose;
+        private double winPercent;
  
         public int Id { get; set; }
         [Required]
@@ -70,6 +71,25 @@ namespace GameNight.Models
             {
                 lose = this.Events.Count();
                 
+            }
+        }
+
+        public double WinPercent
+        {
+            get
+            {
+                if (this.Events != null && this.Events.Count() > 0)
+                {
+                    return Math.Round(Convert.ToDouble(this.Win) / Convert.ToDouble(this.Events.Count()) * 100, 2);
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+            set
+            {
+                winPercent = value;
             }
         }
 

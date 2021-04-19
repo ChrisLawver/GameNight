@@ -4,14 +4,16 @@ using GameNight;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace GameNight.Migrations
 {
     [DbContext(typeof(GameNightContext))]
-    partial class GameNightContextModelSnapshot : ModelSnapshot
+    [Migration("20210419171448_WinPercent")]
+    partial class WinPercent
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -62,7 +64,7 @@ namespace GameNight.Migrations
                             Location = "16-Bit",
                             Name = "Tournament",
                             OwnerId = 0,
-                            PlayedOn = new DateTime(2021, 4, 19, 13, 27, 51, 313, DateTimeKind.Local).AddTicks(5567)
+                            PlayedOn = new DateTime(2021, 4, 19, 13, 14, 47, 596, DateTimeKind.Local).AddTicks(8198)
                         });
                 });
 
@@ -145,9 +147,6 @@ namespace GameNight.Migrations
                     b.Property<int>("Win")
                         .HasColumnType("int");
 
-                    b.Property<double>("WinPercent")
-                        .HasColumnType("float");
-
                     b.HasKey("Id");
 
                     b.ToTable("Users");
@@ -161,8 +160,7 @@ namespace GameNight.Migrations
                             Password = "password",
                             ProfilePic = "https://cdn.vox-cdn.com/thumbor/QyaLYNjgXHUP4aQjxDsyG_Gw9w0=/0x0:1700x960/1075x1075/filters:focal(714x344:986x616):format(webp)/cdn.vox-cdn.com/uploads/chorus_image/image/57514059/mario.0.jpg",
                             Username = "mario",
-                            Win = 0,
-                            WinPercent = 0.0
+                            Win = 0
                         },
                         new
                         {
@@ -172,8 +170,7 @@ namespace GameNight.Migrations
                             Password = "password2",
                             ProfilePic = "https://play.nintendo.com/images/Masthead_luigi.17345b1513ac044897cfc243542899dce541e8dc.9afde10b.png",
                             Username = "luigi",
-                            Win = 0,
-                            WinPercent = 0.0
+                            Win = 0
                         });
                 });
 
