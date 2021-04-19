@@ -39,13 +39,16 @@ namespace GameNight.Controllers
             var games = userGameRepo.PopulateGameList();
             ViewBag.GameId = games;
 
-            if (!userGameRepo.CheckDuplicateUserGame(model.UserId, model.GameId))
+            if (userGameRepo.CheckDuplicateUserGame(model.UserId, model.GameId))
+            {
+                ViewBag.Error = "Game is already added to your favorites";
+                return View(model);
+            }
+            else
             {
                 userGameRepo.Create(model);
+                return RedirectToAction("Details", "User", new { id = model.UserId });
             }
-
-            return RedirectToAction("Details", "User", new { id = model.UserId });
-
         }
 
         public ActionResult Delete(int id)

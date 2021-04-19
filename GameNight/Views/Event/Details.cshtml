@@ -47,14 +47,14 @@
     <div>
         @if (!String.IsNullOrEmpty(HttpContextAccessor.HttpContext.Session.GetString("UserId")) && Model.Active)
         {
-            <a class="btn btn-primary" href="/UserEvent/Delete/@userEvent.Id">Remove User From Event</a>
+            <a class="btn btn-primary" href="/UserEvent/Delete/@userEvent.Id">Remove Player From Event</a>
         }
     </div>
 }
 
 @if (!String.IsNullOrEmpty(HttpContextAccessor.HttpContext.Session.GetString("UserId")) && Model.Active)
 {
-    <a class="btn btn-primary" href="/UserEvent/Create/?eventId=@Model.Id">Add User to Event</a>
+<a class="btn btn-primary" href="/UserEvent/Create/?eventId=@Model.Id">Add Player to Event</a>
 }
 
 

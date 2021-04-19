@@ -42,13 +42,21 @@ namespace GameNight.Controllers
 
             model.Event = userEventRepo.GetEventById(model.EventId);
 
-            if (!userEventRepo.CheckDuplicateUserEvent(model.UserId, model.EventId) && userEventRepo.CheckMaxPlayers(model.Event.Game.MaxPlayers, model.Event.Attendees))
+            if (userEventRepo.CheckDuplicateUserEvent(model.UserId, model.EventId))
+            {
+                ViewBag.Error = "Player is already registered for this event";
+                return View(model);
+            }
+            else if (!userEventRepo.CheckMaxPlayers(model.Event.Game.MaxPlayers, model.Event.Attendees))
+            {
+                ViewBag.Error = "Cannot exceed maximum player count";
+                return View(model);
+            }
+            else
             {
                 userEventRepo.Create(model);
+                return RedirectToAction("Details", "Event", new { id = model.EventId });
             }
-
-            return RedirectToAction("Details", "Event", new { id = model.EventId });
-
         }
 
         public ViewResult Close(int id)
@@ -74,7 +82,6 @@ namespace GameNight.Controllers
             userEventRepo.Delete(userEvent);
             return RedirectToAction("Details", "Event", new { id = eventId });
         }
-
     }
 }
 
