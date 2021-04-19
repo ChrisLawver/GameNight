@@ -30,6 +30,7 @@ namespace GameNight.Controllers
             {
                 HttpContext.Session.SetString("Username", response.User.Username);
                 HttpContext.Session.SetString("UserId", response.User.Id.ToString());
+                HttpContext.Session.SetString("UserImg", response.User.ProfilePic);
                 return RedirectToAction("Details", "User", new { id = response.User.Id});
             }
             else
