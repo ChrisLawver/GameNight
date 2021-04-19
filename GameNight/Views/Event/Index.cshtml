@@ -6,8 +6,15 @@
 *@
 @{
 }
+@{
+    List<Event> activeEvents = Model.Where(x => x.Active).OrderByDescending(x => x.PlayedOn).ToList();
+}
 
-@foreach (var item in Model)
+@{
+    List<Event> closedEvents = Model.Where(x => x.Active == false).OrderByDescending(x => x.PlayedOn).ToList();
+}
+<h2>Upcoming Events</h2>
+@foreach (var item in activeEvents)
 {
     <div class="box">
         <div class="content">
@@ -22,9 +29,25 @@
     </div>
 }
 
-    @if (!String.IsNullOrEmpty(HttpContextAccessor.HttpContext.Session.GetString("UserId")))
-     {
-           int ownerId = Convert.ToInt32(HttpContextAccessor.HttpContext.Session.GetString("UserId"));
-           <a class="btn btn-primary" href="/Event/Create/?OwnerId=@ownerId">Create Event</a>
-     }
+@if (!String.IsNullOrEmpty(HttpContextAccessor.HttpContext.Session.GetString("UserId")))
+{
+    int ownerId = Convert.ToInt32(HttpContextAccessor.HttpContext.Session.GetString("UserId"));
+    <a class="btn btn-primary" href="/Event/Create/?OwnerId=@ownerId">Create Event</a>
+}
+
+<h2>Past Events</h2>
+@foreach (var item in closedEvents)
+{
+    <div class="box">
+        <div class="content">
+            <h3><a href="/Event/Details/@item.Id">@item.Name</a></h3>
+            <p>@item.Game.Title</p>
+            <p>Created by @item.Owner</p>
+            @if (Convert.ToInt32(HttpContextAccessor.HttpContext.Session.GetString("UserId")) == item.OwnerId)
+            {
+                <a class="btn btn-primary" href="/Event/Update/@item.Id">Update Event</a> <a class="btn btn-primary" href="/Event/Delete/@item.Id">Delete Event</a>
+            }
+        </div>
+    </div>
+}
 

@@ -1,0 +1,12 @@
+﻿@model IEnumerable<GameNight.Models.User>
+
+<h1>Leaderboard</h1>
+
+@{
+    List<User> orderedList = Model.Where(x => x.Events.Count() > 0).OrderByDescending(x => x.WinPercent).ThenByDescending(x => x.Win).ToList(); 
+ }
+
+@foreach(var item in orderedList)
+{
+    <p>@item.Username | @item.Win - @item.Lose | @item.WinPercent%</p>
+}

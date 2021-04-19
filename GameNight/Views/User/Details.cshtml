@@ -22,7 +22,7 @@
 </div>
 <div>
     <h5>Wins/Losses</h5>
-    <p> @Model.Win - @Model.Lose</p>  
+    <p> @Model.Win - @Model.Lose</p>
     <p>Win Percentage</p>
     <p>@Model.WinPercent%</p>
 </div>
@@ -51,7 +51,7 @@ else
 
 @if (Convert.ToInt32(HttpContextAccessor.HttpContext.Session.GetString("UserId")) == Model.Id)
 {
-<a class="btn btn-primary" href="/UserGame/Create/?userId=@Model.Id">Add Favorite</a>
+    <a class="btn btn-primary" href="/UserGame/Create/?userId=@Model.Id">Add Favorite</a>
 }
 
 @if (Convert.ToInt32(HttpContextAccessor.HttpContext.Session.GetString("UserId")) == Model.Id)
@@ -62,11 +62,14 @@ else
 {
     <h3>@Model.Username's Events</h3>
 }
+@{
+    List<UserEvent> orderedList = Model.Events.OrderByDescending(x => x.Event.PlayedOn).ToList();
+}
 
-@foreach (var userEvent in Model.Events)
+@foreach (var userEvent in orderedList)
 {
     <div>
-        @userEvent.Event.Name
+        <a href="/Event/Details/@userEvent.EventId">@userEvent.Event.Name</a>
     </div>
     <div>
         @userEvent.Event.PlayedOn
