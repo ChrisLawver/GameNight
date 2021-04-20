@@ -42,7 +42,7 @@ namespace GameNight.Models
             {
                 if(this.Events != null)
                 {
-                return this.Events.Where(e => e.IsWin == true).Count();
+                return this.Events.Where(e => e.IsWin == true && e.Active == false).Count();
                 }
                 else
                 {
@@ -51,7 +51,7 @@ namespace GameNight.Models
             }
             set
             {
-                win = this.Events.Count();
+                win = value;
             }
         }
         public int Lose
@@ -60,7 +60,7 @@ namespace GameNight.Models
             {
                 if (this.Events != null)
                 {
-                    return this.Events.Count()- Win;
+                    return this.Events.Where(e => e.IsWin == false && e.Active == false).Count();
                 }
                 else
                 {
@@ -69,7 +69,7 @@ namespace GameNight.Models
             }
             set
             {
-                lose = this.Events.Count();
+                lose = value;
                 
             }
         }
@@ -78,9 +78,9 @@ namespace GameNight.Models
         {
             get
             {
-                if (this.Events != null && this.Events.Count() > 0)
+                if (this.Events != null && this.Events.Where(e => e.Active == false).Count() > 0)
                 {
-                    return Math.Round(Convert.ToDouble(this.Win) / Convert.ToDouble(this.Events.Count()) * 100, 2);
+                    return Math.Round(Convert.ToDouble(this.Win) / Convert.ToDouble(this.Events.Where(e => e.Active == false).Count()) * 100, 2);
                 }
                 else
                 {

@@ -30,8 +30,9 @@
 
             @if (!String.IsNullOrEmpty(HttpContextAccessor.HttpContext.Session.GetString("UserId")))
             {
+                int ownerId = Convert.ToInt32(HttpContextAccessor.HttpContext.Session.GetString("UserId"));
                 <a class="btn btn-primary" href="/Game/Delete/@item.Id">Remove from Gallery</a>
-                <a class="btn btn-primary" href="/Event/Create/?gameId=@item.Id">Create an Event</a>
+                <a class="btn btn-primary" href="/Event/Create/?gameId=@item.Id&OwnerId=@ownerId">Create an Event</a>
             }
 
         </div>
