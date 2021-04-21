@@ -7,23 +7,23 @@
 <div>
     <h1>@Model.Username</h1>
     <div>
-        <img src="@Model.ProfilePic" />
+        <img class="gameGalleryImage" src="@Model.ProfilePic" />
     </div>
     <br />
     <p class="winLoss">@Model.FirstName @Model.LastName</p>
 </div>
 <div>
-    <h4>Bio</h4>
+    <h3>Bio</h3>
     <p>@Model.Bio</p>
 </div>
 <div>
-    <h4>Location</h4>
+    <h3>Location</h3>
     <p>@Model.Location</p>
 </div>
 <div>
-    <h4>Wins/Losses</h4>
+    <h3>Wins/Losses</h3>
     <p> @Model.Win - @Model.Lose</p>
-    <h4>Win Percentage</h4>
+    <h3>Win Percentage</h3>
     <p>@Model.WinPercent%</p>
 </div>
 
@@ -39,7 +39,7 @@ else
 @foreach (var userGame in Model.Games)
 {
     <div>
-        @userGame.Game.Title
+        <h4>@userGame.Game.Title</h4>
     </div>
     <div>
         @if (Convert.ToInt32(HttpContextAccessor.HttpContext.Session.GetString("UserId")) == Model.Id)
@@ -69,14 +69,14 @@ else
 @foreach (var userEvent in orderedList)
 {
     <div>
-        <a href="/Event/Details/@userEvent.EventId">@userEvent.Event.Name</a>
+        <h3><a href="/Event/Details/@userEvent.EventId">@userEvent.Event.Name</a></h3>
     </div>
     <div>
-        @userEvent.Event.PlayedOn
+        <p>@userEvent.Event.PlayedOn</p>
     </div>
     <div>
-        @userEvent.Event.Location
-    </div>
+        <p>@userEvent.Event.Location</p>
+</div>
 }
 
 @if (Convert.ToInt32(HttpContextAccessor.HttpContext.Session.GetString("UserId")) == Model.Id)
