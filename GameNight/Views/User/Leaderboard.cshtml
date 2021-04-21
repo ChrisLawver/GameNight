@@ -3,7 +3,7 @@
 <h1>Leaderboard</h1>
 
 @{
-    List<User> orderedList = Model.Where(x => x.Events.Count() > 0).OrderByDescending(x => x.WinPercent).ThenByDescending(x => x.Win).ToList(); 
+    List<User> orderedList = Model.Where(x => x.Events.Where(x => x.Active == false).Count() > 0).OrderByDescending(x => x.WinPercent).ThenByDescending(x => x.Win).ToList(); 
  }
 
 @foreach(var item in orderedList)

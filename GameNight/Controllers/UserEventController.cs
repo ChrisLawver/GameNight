@@ -59,6 +59,41 @@ namespace GameNight.Controllers
             }
         }
 
+        public ViewResult CreateByUserId(int eventId, int userId)
+        {
+            //var users = userEventRepo.PopulateUserList();
+
+            //ViewBag.UserId = users;
+
+            return View(new UserEvent() { EventId = eventId, Id = 0, UserId = userId, Active = true });
+
+        }
+
+        [HttpPost]
+        public ActionResult CreateByUserId(UserEvent model)
+        {
+            //var users = userEventRepo.PopulateUserList();
+            //ViewBag.UserId = users;
+
+            model.Event = userEventRepo.GetEventById(model.EventId);
+
+            if (userEventRepo.CheckDuplicateUserEvent(model.UserId, model.EventId))
+            {
+                ViewBag.Error = "Player is already registered for this event";
+                return View(model);
+            }
+            else if (!userEventRepo.CheckMaxPlayers(model.Event.Game.MaxPlayers, model.Event.Attendees))
+            {
+                ViewBag.Error = "Cannot exceed maximum player count";
+                return View(model);
+            }
+            else
+            {
+                userEventRepo.Create(model);
+                return RedirectToAction("Details", "Event", new { id = model.EventId });
+            }
+        }
+
         public ViewResult Close(int id)
         {
             var userEvent = userEventRepo.GetById(id);
