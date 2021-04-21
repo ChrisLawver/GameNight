@@ -51,7 +51,24 @@ namespace GameNight.Controllers
         [HttpPost]
         public ActionResult Update(User model)
         {
-            userRepo.Update(model);
+            var user = userRepo.GetById(model.Id);
+            user.FirstName = model.FirstName;
+            user.LastName = model.LastName;
+            if (String.IsNullOrEmpty(model.ProfilePic))
+            {
+                user.ProfilePic = "/images/gamepiece_icon.png";
+            }
+            else
+            {
+                user.ProfilePic = model.ProfilePic;
+            }
+            user.Location = model.Location;
+            user.Bio = model.Bio;
+            if (!string.IsNullOrEmpty(model.Password))
+            {
+                user.Password = model.Password;
+            }
+            userRepo.Update(user);
             return RedirectToAction("Details", new { id = model.Id });
 
         }

@@ -25,7 +25,7 @@
 {
     <div class="box">
         <div class="content">
-            <h2><a href="/Game/Details/@item.Id">@item.Title</a></h2>
+            <h2><a class="gameList" href="/Game/Details/@item.Id">@item.Title</a></h2>
             <img class="gameGalleryImage" src="@item.Image" />
 
             @if (!String.IsNullOrEmpty(HttpContextAccessor.HttpContext.Session.GetString("UserId")))

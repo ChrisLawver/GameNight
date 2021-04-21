@@ -46,6 +46,7 @@ function ShowResults(name, gameImg, gameId, minPlayers, maxPlayers) {
     let searchResult = document.createElement("h3");
     let searchResultImg = document.createElement("img");
     searchResultImg.classList.add("gameGalleryImage");
+    searchResult.classList.add("gameList");
     searchResult.innerHTML = `Add <strong>${name}</strong> to Gallery`;
     searchResultImg.src = gameImg;
     link.appendChild(searchResult);
