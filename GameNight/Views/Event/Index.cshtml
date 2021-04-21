@@ -13,13 +13,14 @@
 @{
     List<Event> closedEvents = Model.Where(x => x.Active == false).OrderByDescending(x => x.PlayedOn).ToList();
 }
-<h2>Upcoming Events</h2>
+<h1>Upcoming Events</h1>
 @foreach (var item in activeEvents)
 {
     <div class="box">
         <div class="content">
-            <h3><a href="/Event/Details/@item.Id">@item.Name</a></h3>
-            <p>@item.Game.Title</p>
+            <h2><a href="/Event/Details/@item.Id">@item.Name</a></h2>
+            <h3>@item.Game.Title</h3>
+            <img class="gameGalleryImage" src="@item.Game.Image" />
             <p>Created by @item.Owner</p>
             @if (Convert.ToInt32(HttpContextAccessor.HttpContext.Session.GetString("UserId")) == item.OwnerId)
             {
@@ -40,8 +41,9 @@
 {
     <div class="box">
         <div class="content">
-            <h3><a href="/Event/Details/@item.Id">@item.Name</a></h3>
-            <p>@item.Game.Title</p>
+            <h2><a href="/Event/Details/@item.Id">@item.Name</a></h2>
+            <h3>@item.Game.Title</h3>
+            <img class="gameGalleryImage" src="@item.Game.Image" />
             <p>Created by @item.Owner</p>
             @if (Convert.ToInt32(HttpContextAccessor.HttpContext.Session.GetString("UserId")) == item.OwnerId)
             {

@@ -7,8 +7,8 @@
 
 <div class="box">
     <div class="content">
-        <h3 id="gameTitle">@Model.Title</h3>
-        <img src="@Model.Image" />
+        <h1 id="gameTitle">@Model.Title</h1>
+        <img class="gameGalleryImage" src="@Model.Image" />
 
         @if (Model.MinPlayers < Model.MaxPlayers)
         {
