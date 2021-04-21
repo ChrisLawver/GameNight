@@ -9,19 +9,53 @@ a.navbar-brand {
 
 /* Provide sufficient contrast against white background */
 a {
-  color: #0366d6;
+    color: #d62828;
+}
+    
+a:hover {
+    color: #f77f00;
+    text-decoration: none;
 }
 
+nav a:hover {
+   color: #085788;
+   text-decoration: none;
+}
+
+.navbar-brand {
+    
+}
+
+
+#nav-logo {
+    position: relative;
+    width: 170px;
+    left: 15px;
+    background-size: contain;
+}
+
+#nav-userInfo {
+    margin-left: 20%;
+    background-size: contain;
+    list-style: none;
+}
+
+#nav-profilepic {
+    height: 75px;
+    border-radius: 50%;
+}
+
+
 .btn-primary {
-  color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
+    color: #d62828;
+    background-color: #fcbf49;
+    border-color: #1861ac;
 }
 
 nav {
-  color: #fff;
-  background-color: #fcbf49 !important;
-  border-color: #1861ac;
+    color: #d62828;
+    background-color: #fcbf49 !important;
+    font-size: 30px;
 }
 
 .nav-link{
@@ -63,16 +97,23 @@ html {
 }
 
 body {
-  /* Margin bottom by footer height */
-  margin-bottom: 60px;
-  background-color: #085788;
-  font-family:"Cherry Cream Soda";
+    /* Margin bottom by footer height */
+    margin-bottom: 60px;
+    background-color: #085788;
+    font-family: "Cherry Cream Soda";
+    color: #fff1d0;
 }
 
+h1, h2, h3, h4, h5, h6, p {
+    color: #fff1d0;
+}
+
+
 .footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  white-space: nowrap;
-  line-height: 60px; /* Vertically center the text there */
+    color: #fff1d0;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    white-space: nowrap;
+    line-height: 60px; /* Vertically center the text there */
 }

@@ -27,6 +27,7 @@ namespace GameNight
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddSession();
+            //services.AddControllersWithViews().AddRazorRuntimeCompilation();
             services.AddControllersWithViews();
             services.AddScoped<IRepository<Event>, EventRepository>();
             services.AddScoped<IRepository<Game>, GameRepository>();
