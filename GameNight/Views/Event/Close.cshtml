@@ -19,11 +19,11 @@
             @*<input type="checkbox" asp-for="@item.IsWin" />*@
             @if(item.IsWin)
             {
-                <p>Winner!</p>
+                <p class="winLoss">Winner!</p>
             }
             else if(!item.Active)
             {
-                <p>Loser :(</p>
+                <p class="winLoss">Loser</p>
             }
 
             @*<div class="form-group">

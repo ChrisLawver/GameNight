@@ -3,10 +3,13 @@
 <h1>Leaderboard</h1>
 
 @{
-    List<User> orderedList = Model.Where(x => x.Events.Where(x => x.Active == false).Count() > 0).OrderByDescending(x => x.WinPercent).ThenByDescending(x => x.Win).ToList(); 
- }
+    List<User> orderedList = Model.Where(x => x.Events.Where(x => x.Active == false).Count() > 0).OrderByDescending(x => x.WinPercent).ThenByDescending(x => x.Win).ToList();
+}
 
-@foreach(var item in orderedList)
+@foreach (var item in orderedList)
 {
-    <p>@item.Username | @item.Win - @item.Lose | @item.WinPercent%</p>
+    <img class="gameGalleryImage" src="@item.ProfilePic" />
+    <p><a href="/User/Details/@item.Id">@item.Username</a></p>
+    <p>Win/Loss @item.Win - @item.Lose</p>
+    <p>Win Percentage @item.WinPercent%</p>
 }

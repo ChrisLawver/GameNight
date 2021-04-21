@@ -9,13 +9,13 @@ a.navbar-brand {
 
 /* Provide sufficient contrast against white background */
 a {
-    color: #d62828;
-}
-    
-a:hover {
     color: #f77f00;
-    text-decoration: none;
 }
+
+    a:hover {
+        color: #d62828;
+        text-decoration: none;
+    }
 
 nav a:hover {
    color: #085788;
@@ -108,6 +108,10 @@ h1, h2, h3, h4, h5, h6, p {
     color: #fff1d0;
 }
 
+p, .control-label{
+    font-family:sans-serif,Arial,Calibri;
+    font-size:28px;
+}
 
 .footer {
     color: #fff1d0;
@@ -116,4 +120,10 @@ h1, h2, h3, h4, h5, h6, p {
     width: 100%;
     white-space: nowrap;
     line-height: 60px; /* Vertically center the text there */
+}
+
+
+.gameGalleryImage{
+    max-height:150px;
+    max-width:150px;
 }
