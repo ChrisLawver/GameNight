@@ -245,5 +245,20 @@ p, .control-label, .form-control, form {
     color: #000000;
 }
 
+.eventBlock {
+    background-color: #ebebeb;
+    padding: 10px 0px 10px 20px;
+    margin-top:1em;
+}
 
+.winner{
+    color:green;
+}
 
+.loser{
+    color:red;
+}
+
+.unplayed {
+    color: #085788;
+}
