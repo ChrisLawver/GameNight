@@ -12,7 +12,11 @@ a {
     color: #f77f00;
 }
 
-#homeLogo {
+#homeLogo{
+    height: 650px;
+    width: 650px;
+    margin-top: -135px;
+    margin-bottom: -135px;
 }
 
 .gameList {
@@ -29,16 +33,10 @@ a:hover {
     text-decoration: none;
 }
 
-
 nav a:hover {
     color: #085788;
     text-decoration: none;
 }
-
-.navbar-brand {
-    
-}
-
 
 #nav-logo {
     position: relative;
@@ -53,8 +51,13 @@ nav a:hover {
 }
 
 #nav-profilepic {
-    height: 75px;
+    margin-top: 25px;
+    height: 50px;
     border-radius: 50%;
+}
+
+#logout {
+    margin-top: 15px;
 }
 
 
@@ -64,9 +67,17 @@ nav a:hover {
     border-color: #1861ac;
 }
 
+.eventCreate {
+    padding-left: 5px;
+}
+
+.userDetailBtn {
+    padding-top: 10px;
+    align-content: space-around;
+}
+
 .crud {
     display:inline;
-    color: red;
 }
 
 nav {
@@ -114,6 +125,14 @@ html {
   min-height: 100%;
 }
 
+.text-center h1{
+    font-size: 75px;
+}
+
+.text-center h2 {
+    font-size: 45px;
+}
+
 body {
     /* Margin bottom by footer height */
     margin-bottom: 60px;
@@ -139,6 +158,8 @@ p, .control-label, .form-control, form {
     width: 100%;
     white-space: nowrap;
     line-height: 60px; /* Vertically center the text there */
+    text-align: center;
+    font-size: 28px;
 }
 
 .gameGalleryImage{
@@ -154,6 +175,13 @@ p, .control-label, .form-control, form {
     grid-gap: 15px;
 }
 
+.userCards {
+    max-width: 1000px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 15px;
+}
+
 .card {
     border: 2px solid #e7e7e7;
     border-radius: 4px;
@@ -162,11 +190,13 @@ p, .control-label, .form-control, form {
     background-image: url("https://www.transparenttextures.com/patterns/asfalt-dark.png");
 }
 
+
 .card:hover {
     box-shadow: 0 5px 15px rgba(0,0,0, .5);
 }
 
-.cardImg{
+
+.cardImg {
     width: 100%;
     display: block;
     padding: 10px;
@@ -183,20 +213,35 @@ p, .control-label, .form-control, form {
     background-image: url("https://www.transparenttextures.com/patterns/asfalt-dark.png");
 }
 
-.box {
-    top: 50%;
-    left: 50%;
-    width: 600px;
-    padding: 20px;
-    box-sizing: border-box;
-    border-radius: 4px;
-    box-shadow: 0 5px 15px rgba(0,0,0, .5);
-    display: flex;
-    transition: 0.5s;
-    margin: 6px;
+.userCard_Content {
+    text-align: center;
+    line-height: 1.5;
+    font-size: 0.9rem;
+    padding: 15px;
+    background: #fafafa;
     background-color: #ebebeb;
     background-image: url("https://www.transparenttextures.com/patterns/asfalt-dark.png");
 }
+
+.userCard_Content h3, .userCard_Content p {
+    color: black;
+}
+
+
+    .box {
+        top: 50%;
+        left: 50%;
+        width: 600px;
+        padding: 20px;
+        box-sizing: border-box;
+        border-radius: 4px;
+        box-shadow: 0 5px 15px rgba(0,0,0, .5);
+        display: flex;
+        transition: 0.5s;
+        margin: 6px;
+        background-color: #ebebeb;
+        background-image: url("https://www.transparenttextures.com/patterns/asfalt-dark.png");
+    }
 
 .leaderboardBox {
     top: 50%;

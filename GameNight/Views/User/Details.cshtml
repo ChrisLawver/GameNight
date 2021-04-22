@@ -71,62 +71,72 @@ else
     List<UserEvent> orderedList = Model.Events.OrderByDescending(x => x.Event.PlayedOn).ToList();
 }
 
-@foreach (var userEvent in orderedList)
-{
-    if (userEvent.Active == false && userEvent.IsWin == true)
+<div class="userCards">
+    @foreach (var userEvent in orderedList)
     {
-        <div class="eventBlock">
-            <div>
-                <h3><a href="/Event/Details/@userEvent.EventId">@userEvent.Event.Name</a></h3>
+        if (userEvent.Active == false && userEvent.IsWin == true)
+        {
+            <div class="card">
+                <div class="card_Content">
+                    <div>
+                        <h3><a href="/Event/Details/@userEvent.EventId">@userEvent.Event.Name</a></h3>
+                    </div>
+                    <div>
+                        <p class="winner"><strong>Winner</strong></p>
+                    </div>
+                    <div>
+                        <p class="winner">@userEvent.Event.PlayedOn</p>
+                    </div>
+                    <div>
+                        <p class="winner">@userEvent.Event.Location</p>
+                    </div>
+                </div>
             </div>
-            <div>
-                <p class="winner"><strong>Winner</strong></p>
+        }
+        else if (userEvent.Active == false && userEvent.IsWin == false)
+        {
+            <div class="card">
+                <div class="card_Content">
+                    <div>
+                        <h3><a href="/Event/Details/@userEvent.EventId">@userEvent.Event.Name</a></h3>
+                    </div>
+                    <div>
+                        <p class="loser"><strong>Loser</strong></p>
+                    </div>
+                    <div>
+                        <p class="loser">@userEvent.Event.PlayedOn</p>
+                    </div>
+                    <div>
+                        <p class="loser">@userEvent.Event.Location</p>
+                    </div>
+                </div>
             </div>
-            <div>
-                <p class="winner">@userEvent.Event.PlayedOn</p>
+        }
+        else
+        {
+            <div class="card">
+                <div class="card_Content">
+                    <div>
+                        <h3><a href="/Event/Details/@userEvent.EventId">@userEvent.Event.Name</a></h3>
+                    </div>
+                    <div>
+                        <p class="unplayed">@userEvent.Event.PlayedOn</p>
+                    </div>
+                    <div>
+                        <p class="unplayed">@userEvent.Event.Location</p>
+                    </div>
+                </div>
             </div>
-            <div>
-                <p class="winner">@userEvent.Event.Location</p>
-            </div>
-        </div>
+        }
     }
-    else if (userEvent.Active == false && userEvent.IsWin == false)
-    {
-        <div class="eventBlock">
-            <div>
-                <h3><a href="/Event/Details/@userEvent.EventId">@userEvent.Event.Name</a></h3>
-            </div>
-            <div>
-                <p class="loser"><strong>Loser</strong></p>
-            </div>
-            <div>
-                <p class="loser">@userEvent.Event.PlayedOn</p>
-            </div>
-            <div>
-                <p class="loser">@userEvent.Event.Location</p>
-            </div>
-        </div>
-    }
-    else
-    {
-        <div class="eventBlock">
-            <div>
-                <h3><a href="/Event/Details/@userEvent.EventId">@userEvent.Event.Name</a></h3>
-            </div>
-            <div>
-                <p class="unplayed">@userEvent.Event.PlayedOn</p>
-            </div>
-            <div>
-                <p class="unplayed">@userEvent.Event.Location</p>
-            </div>
-        </div>
-    }
-}
+</div>
 
-@if (Convert.ToInt32(HttpContextAccessor.HttpContext.Session.GetString("UserId")) == Model.Id)
-{
-    <a class="btn btn-primary" href="/User/Delete/@Model.Id">Delete Account</a>
-    <a class="btn btn-primary" href="/User/Update/@Model.Id">Update Account</a>
+<div class="userDetailBtn">
+    @if (Convert.ToInt32(HttpContextAccessor.HttpContext.Session.GetString("UserId")) == Model.Id)
+    {
+        <a class="btn btn-primary" href="/User/Delete/@Model.Id">Delete Account</a>
+        <a class="btn btn-primary" href="/User/Update/@Model.Id">Update Account</a>
 
-}
+    }
+</div>
 
