@@ -6,12 +6,14 @@
     List<User> orderedList = Model.OrderBy(x => x.Username).ToList();
 }
 
-@foreach (var item in orderedList)
-{
-    <div>
-        <h2><a href="/User/Details/@item.Id">@item.Username</a></h2>
-    </div>
-    <div>
-        <img class="gameGalleryImage" src="@item.ProfilePic" />
-    </div>
-}
+<div class="cards">
+    @foreach (var item in orderedList)
+    {
+        <div class="card">
+            <img class="cardImg" src="@item.ProfilePic" />
+            <div class="card_Content">
+                <h2><a href="/User/Details/@item.Id">@item.Username</a></h2>
+            </div>
+        </div>
+    }
+</div>
