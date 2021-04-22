@@ -64,6 +64,10 @@ nav a:hover {
     border-color: #1861ac;
 }
 
+.crud {
+    display:inline;
+}
+
 nav {
     color: #d62828;
     background-color: #fcbf49 !important;
