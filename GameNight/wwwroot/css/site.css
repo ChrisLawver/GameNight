@@ -153,6 +153,8 @@ p, .control-label, .form-control, form {
     border: 2px solid #e7e7e7;
     border-radius: 4px;
     padding: .5rem;
+    background-color: #ebebeb;
+    background-image: url("https://www.transparenttextures.com/patterns/asfalt-dark.png");
 }
 
 .card:hover {
@@ -166,27 +168,30 @@ p, .control-label, .form-control, form {
     border-radius: 4px;
 }
 
-.card_Content{
+.card_Content {
+    text-align :center;
     line-height: 1.5;
     font-size: 0.9rem;
     padding: 15px;
     background: #fafafa;
+    background-color: #ebebeb;
+    background-image: url("https://www.transparenttextures.com/patterns/asfalt-dark.png");
 }
 
 .box {
-        top: 50%;
-        left: 50%;
-        width: 400px;
-        padding: 20px;
-        box-sizing: border-box;
-        border-radius: 4px;
-        box-shadow: 0 5px 15px rgba(0,0,0, .5);
-        display: flex;
-        transition: 0.5s;
-        margin: 6px;
-        background-color: #ebebeb;
-        background-image: url("https://www.transparenttextures.com/patterns/asfalt-dark.png");
-    }
+    top: 50%;
+    left: 50%;
+    width: 600px;
+    padding: 20px;
+    box-sizing: border-box;
+    border-radius: 4px;
+    box-shadow: 0 5px 15px rgba(0,0,0, .5);
+    display: flex;
+    transition: 0.5s;
+    margin: 6px;
+    background-color: #ebebeb;
+    background-image: url("https://www.transparenttextures.com/patterns/asfalt-dark.png");
+}
 
 .leaderboardBox {
     top: 50%;
@@ -203,17 +208,32 @@ p, .control-label, .form-control, form {
     background-image: url("https://www.transparenttextures.com/patterns/asfalt-dark.png");
 }
 
-.box:hover, .leaderboardBox:hover{
+.eventBox {
+    top: 50%;
+    left: 50%;
+    width: 600px;
+    padding: 20px;
+    box-sizing: border-box;
+    border-radius: 4px;
+    box-shadow: 0 5px 15px rgba(0,0,0, .5);
+    display: flex;
+    transition: 0.5s;
+    margin: 6px;
+    background-color: #ebebeb;
+    background-image: url("https://www.transparenttextures.com/patterns/asfalt-dark.png");
+}
+
+.box:hover, .leaderboardBox:hover, .eventBox:hover{
     box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
 }
 
-.box .imgBox{
+.box .imgBox .eventImg .gameGalleryImage {
     width: 150px;
     flex: 0 0 150px;
 }
 
-.box .imgBox img{
-    max-width: 100%;
+.box .imgBox .eventImg .gameGalleryImage img {
+     max-width: 100%;
 }
 
 .leaderboardBox .imgBox img {
@@ -223,19 +243,39 @@ p, .control-label, .form-control, form {
 
 .box .content {
     padding-left: 20px;
+    display: flex;
+    flex-direction: row;
 }
 
-.leaderboardBox .leaderboardContext {
+.eventBox .eventContent {
+    padding-left: 20px;
+    display: flex;
+    flex-direction: row;
+}
+
+.leaderboardBox .leaderboardContext{
     padding-left: 20px;
 }
 
-    .box .content p {
-        margin: 0;
-        padding: 10px 0 0;
-        margin-bottom: 10px;
-        text-align: justify;
-        color: #000000;
-    }
+.box .content p{
+    margin: 0;
+    padding: 10px 0 0;
+    margin-bottom: 10px;
+    text-align: justify;
+    color: #000000;
+}
+
+.gameTitle {
+    padding-left: 10px;
+}
+
+.eventTitle {
+    padding-left: 20px;
+}
+
+.eventTitle h3{
+    color: black;
+}
 
 .leaderboardBox .leaderboardContext p {
     margin: 0;

@@ -25,9 +25,12 @@
 {
     <div class="box">
         <div class="content">
-            <h2><a class="gameList" href="/Game/Details/@item.Id">@item.Title</a></h2>
-            <img class="gameGalleryImage" src="@item.Image" />
-
+            <div class="imgBox">
+                <img class="gameGalleryImage" src="@item.Image" />
+            </div>
+            <div class="gameTitle">
+                <h2><a class="gameList" href="/Game/Details/@item.Id">@item.Title</a></h2>
+            </div>
             @if (!String.IsNullOrEmpty(HttpContextAccessor.HttpContext.Session.GetString("UserId")))
             {
                 int ownerId = Convert.ToInt32(HttpContextAccessor.HttpContext.Session.GetString("UserId"));
