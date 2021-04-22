@@ -136,26 +136,58 @@ p, .control-label, .form-control, form {
     line-height: 60px; /* Vertically center the text there */
 }
 
-
 .gameGalleryImage{
     max-height:150px;
     max-width:150px;
 }
 
-.box {
-    top: 50%;
-    left: 50%;
-    width: 400px;
-    padding: 20px;
-    box-sizing: border-box;
-    border-radius: 4px;
-    box-shadow: 0 5px 15px rgba(0,0,0, .5);
-    display: flex;
-    transition: 0.5s;
-    margin: 6px;
-    background-color: #ebebeb;
-    background-image: url("https://www.transparenttextures.com/patterns/asfalt-dark.png");
+.cards {
+    margin: 0 auto;
+    max-width: 1000px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 15px;
 }
+
+.card {
+    border: 2px solid #e7e7e7;
+    border-radius: 4px;
+    padding: .5rem;
+}
+
+.card:hover {
+    box-shadow: 0 5px 15px rgba(0,0,0, .5);
+}
+
+.cardImg{
+    width: 100%;
+    display: block;
+    padding: 10px;
+    border-radius: 4px;
+}
+
+.card_Content{
+    line-height: 1.5;
+    font-size: 0.9rem;
+    padding: 15px;
+    background: #fafafa;
+}
+
+
+.box {
+        top: 50%;
+        left: 50%;
+        width: 400px;
+        padding: 20px;
+        box-sizing: border-box;
+        border-radius: 4px;
+        box-shadow: 0 5px 15px rgba(0,0,0, .5);
+        display: flex;
+        transition: 0.5s;
+        margin: 6px;
+        background-color: #ebebeb;
+        background-image: url("https://www.transparenttextures.com/patterns/asfalt-dark.png");
+    }
 
 .leaderboardBox {
     top: 50%;
@@ -213,4 +245,6 @@ p, .control-label, .form-control, form {
     text-align: justify;
     color: #000000;
 }
+
+
 
