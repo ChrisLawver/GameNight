@@ -27,6 +27,8 @@
     <p>@Model.WinPercent%</p>
 </div>
 
+<br />
+
 @if (Convert.ToInt32(HttpContextAccessor.HttpContext.Session.GetString("UserId")) == Model.Id)
 {
     <h3>Your Favorite Games</h3>
@@ -40,6 +42,7 @@ else
 {
     <div>
         <h4>@userGame.Game.Title</h4>
+        <img src="@userGame.Game.Image" />
     </div>
     <div>
         @if (Convert.ToInt32(HttpContextAccessor.HttpContext.Session.GetString("UserId")) == Model.Id)
@@ -53,6 +56,8 @@ else
 {
     <a class="btn btn-primary" href="/UserGame/Create/?userId=@Model.Id">Add Favorite</a>
 }
+
+<br />
 
 @if (Convert.ToInt32(HttpContextAccessor.HttpContext.Session.GetString("UserId")) == Model.Id)
 {
@@ -68,15 +73,54 @@ else
 
 @foreach (var userEvent in orderedList)
 {
-    <div>
-        <h3><a href="/Event/Details/@userEvent.EventId">@userEvent.Event.Name</a></h3>
-    </div>
-    <div>
-        <p>@userEvent.Event.PlayedOn</p>
-    </div>
-    <div>
-        <p>@userEvent.Event.Location</p>
-</div>
+    if (userEvent.Active == false && userEvent.IsWin == true)
+    {
+        <div class="eventBlock">
+            <div>
+                <h3><a href="/Event/Details/@userEvent.EventId">@userEvent.Event.Name</a></h3>
+            </div>
+            <div>
+                <p class="winner"><strong>Winner</strong></p>
+            </div>
+            <div>
+                <p class="winner">@userEvent.Event.PlayedOn</p>
+            </div>
+            <div>
+                <p class="winner">@userEvent.Event.Location</p>
+            </div>
+        </div>
+    }
+    else if (userEvent.Active == false && userEvent.IsWin == false)
+    {
+        <div class="eventBlock">
+            <div>
+                <h3><a href="/Event/Details/@userEvent.EventId">@userEvent.Event.Name</a></h3>
+            </div>
+            <div>
+                <p class="loser"><strong>Loser</strong></p>
+            </div>
+            <div>
+                <p class="loser">@userEvent.Event.PlayedOn</p>
+            </div>
+            <div>
+                <p class="loser">@userEvent.Event.Location</p>
+            </div>
+        </div>
+    }
+    else
+    {
+        <div class="eventBlock">
+            <div>
+                <h3><a href="/Event/Details/@userEvent.EventId">@userEvent.Event.Name</a></h3>
+            </div>
+            <div>
+                <p class="unplayed">@userEvent.Event.PlayedOn</p>
+            </div>
+            <div>
+                <p class="unplayed">@userEvent.Event.Location</p>
+            </div>
+        </div>
+    }
 }
 
 @if (Convert.ToInt32(HttpContextAccessor.HttpContext.Session.GetString("UserId")) == Model.Id)
