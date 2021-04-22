@@ -13,15 +13,16 @@
     <div class="col-md-4">
         @foreach (var item in Model.Attendees)
         {
+            <br />
             @*<input type="hidden" asp-for="@item.Id" />
             <input type="hidden" asp-for="@item.EventId" />*@
             <p>Did @item.User.Username win?</p>
             @*<input type="checkbox" asp-for="@item.IsWin" />*@
-            @if(item.IsWin)
+            @if (item.IsWin)
             {
                 <p class="winLoss">Winner!</p>
             }
-            else if(!item.Active)
+            else if (!item.Active)
             {
                 <p class="winLoss">Loser</p>
             }
@@ -31,8 +32,9 @@
             </div>*@
             @if (item.Active)
             {
-                <a class="btn btn-primary" href="/UserEvent/Close/@item.Id">Resolve Player Outcome</a>
+                <p><a class="btn btn-primary" href="/UserEvent/Close/@item.Id">Resolve Player Outcome</a></p>
             }
+
         }
 
         @if (Model.Attendees.Where(a => a.Active == true).Count() == 0)
