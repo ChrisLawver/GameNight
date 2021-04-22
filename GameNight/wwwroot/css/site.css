@@ -11,6 +11,10 @@ a.navbar-brand {
 a {
     color: #f77f00;
 }
+
+#homeLogo {
+}
+
 .gameList {
     color: #f77f00;
 }
@@ -38,7 +42,6 @@ nav a:hover {
 
 #nav-logo {
     position: relative;
-    width: 170px;
     left: 15px;
     background-size: contain;
 }
@@ -65,6 +68,7 @@ nav {
     color: #d62828;
     background-color: #fcbf49 !important;
     font-size: 30px;
+    max-height: 90px;
 }
 
 .nav-link{
@@ -137,3 +141,76 @@ p, .control-label, .form-control, form {
     max-height:150px;
     max-width:150px;
 }
+
+.box {
+    top: 50%;
+    left: 50%;
+    width: 400px;
+    padding: 20px;
+    box-sizing: border-box;
+    border-radius: 4px;
+    box-shadow: 0 5px 15px rgba(0,0,0, .5);
+    display: flex;
+    transition: 0.5s;
+    margin: 6px;
+    background-color: #ebebeb;
+    background-image: url("https://www.transparenttextures.com/patterns/asfalt-dark.png");
+}
+
+.leaderboardBox {
+    top: 50%;
+    left: 50%;
+    width: auto;
+    padding: 20px;
+    box-sizing: border-box;
+    border-radius: 4px;
+    box-shadow: 0 5px 15px rgba(0,0,0, .5);
+    display: flex;
+    transition: 0.5s;
+    margin: 6px;
+    background-color: #ebebeb;
+    background-image: url("https://www.transparenttextures.com/patterns/asfalt-dark.png");
+}
+
+.box:hover, .leaderboardBox:hover{
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+}
+
+.box .imgBox{
+    width: 150px;
+    flex: 0 0 150px;
+}
+
+.box .imgBox img{
+    max-width: 100%;
+}
+
+.leaderboardBox .imgBox img {
+    max-width: 100%;
+    border-radius: 4px;
+}
+
+.box .content {
+    padding-left: 20px;
+}
+
+.leaderboardBox .leaderboardContext {
+    padding-left: 20px;
+}
+
+    .box .content p {
+        margin: 0;
+        padding: 10px 0 0;
+        margin-bottom: 10px;
+        text-align: justify;
+        color: #000000;
+    }
+
+.leaderboardBox .leaderboardContext p {
+    margin: 0;
+    padding: 10px 0 0;
+    margin-bottom: 10px;
+    text-align: justify;
+    color: #000000;
+}
+

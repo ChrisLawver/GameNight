@@ -8,8 +8,14 @@
 
 @foreach (var item in orderedList)
 {
-    <img class="gameGalleryImage" src="@item.ProfilePic" />
-    <p><a href="/User/Details/@item.Id">@item.Username</a></p>
-    <p>Win/Loss @item.Win - @item.Lose</p>
-    <p>Win Percentage @item.WinPercent%</p>
+<div class="leaderboardBox">
+    <div class="imgBox">
+        <img class="gameGalleryImage" src="@item.ProfilePic" />
+    </div>
+    <div class="leaderboardContext">
+        <h2><a href="/User/Details/@item.Id">@item.Username</a></h2>
+        <p>Win/Loss @item.Win - @item.Lose</p>
+        <p>Win Percentage @item.WinPercent%</p>
+    </div>
+</div>
 }
