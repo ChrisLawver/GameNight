@@ -24,12 +24,13 @@
     <a class="btn btn-primary" href="/Event/Update/@Model.Id">Edit Event</a>
     <a class="btn btn-primary" href="/Event/Close/@Model.Id">Close Event</a>
 }
-
+<br/>
 
 @foreach (var userEvent in Model.Attendees)
 {
+    <br/>
     <div>
-        <a href="/User/Details/@userEvent.UserId">@userEvent.User.Username</a>
+        <h3><a href="/User/Details/@userEvent.UserId">@userEvent.User.Username</a></h3>
         @if (!Model.Active)
         {
             @if (userEvent.IsWin)
@@ -54,6 +55,7 @@
     </div>
 }
 
+<br/>
 @if (!String.IsNullOrEmpty(HttpContextAccessor.HttpContext.Session.GetString("UserId")) && Model.Active && userId == Model.OwnerId)
 {
     <a class="btn btn-primary" href="/UserEvent/Create/?eventId=@Model.Id">Add Player to Event</a>
