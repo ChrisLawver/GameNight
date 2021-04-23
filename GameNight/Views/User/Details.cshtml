@@ -1,0 +1,142 @@
+﻿@model GameNight.Models.User
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@using Microsoft.AspNetCore.Http
+@inject IHttpContextAccessor HttpContextAccessor
+
+
+<div>
+    <h1>@Model.Username</h1>
+    <div>
+        <img class="gameGalleryImage" src="@Model.ProfilePic" />
+    </div>
+    <br />
+    <p class="winLoss">@Model.FirstName @Model.LastName</p>
+</div>
+<div>
+    <h3>Bio</h3>
+    <p>@Model.Bio</p>
+</div>
+<div>
+    <h3>Location</h3>
+    <p>@Model.Location</p>
+</div>
+<div>
+    <h3>Wins/Losses</h3>
+    <p> @Model.Win - @Model.Lose</p>
+    <h3>Win Percentage</h3>
+    <p>@Model.WinPercent%</p>
+</div>
+
+<br />
+
+@if (Convert.ToInt32(HttpContextAccessor.HttpContext.Session.GetString("UserId")) == Model.Id)
+{
+    <h3>Your Favorite Games</h3>
+}
+else
+{
+    <h3>@Model.Username's Favorite Games</h3>
+}
+
+@foreach (var userGame in Model.Games)
+{
+    <div>
+        <h4>@userGame.Game.Title</h4>
+        <img src="@userGame.Game.Image" />
+    </div>
+    <div>
+        @if (Convert.ToInt32(HttpContextAccessor.HttpContext.Session.GetString("UserId")) == Model.Id)
+        {
+            <a class="btn btn-primary" href="/UserGame/Delete/@userGame.Id">Remove From Favorites</a>
+        }
+    </div>
+}
+
+@if (Convert.ToInt32(HttpContextAccessor.HttpContext.Session.GetString("UserId")) == Model.Id)
+{
+    <a class="btn btn-primary" href="/UserGame/Create/?userId=@Model.Id">Add Favorite</a>
+}
+
+<br />
+
+@if (Convert.ToInt32(HttpContextAccessor.HttpContext.Session.GetString("UserId")) == Model.Id)
+{
+    <h3>Your Events</h3>
+}
+else
+{
+    <h3>@Model.Username's Events</h3>
+}
+@{
+    List<UserEvent> orderedList = Model.Events.OrderByDescending(x => x.Event.PlayedOn).ToList();
+}
+
+<div class="userCards">
+    @foreach (var userEvent in orderedList)
+    {
+        if (userEvent.Active == false && userEvent.IsWin == true)
+        {
+            <div class="card">
+                <div class="card_Content">
+                    <div>
+                        <h3><a href="/Event/Details/@userEvent.EventId">@userEvent.Event.Name</a></h3>
+                    </div>
+                    <div>
+                        <p class="winner"><strong>Winner</strong></p>
+                    </div>
+                    <div>
+                        <p class="winner">@userEvent.Event.PlayedOn</p>
+                    </div>
+                    <div>
+                        <p class="winner">@userEvent.Event.Location</p>
+                    </div>
+                </div>
+            </div>
+        }
+        else if (userEvent.Active == false && userEvent.IsWin == false)
+        {
+            <div class="card">
+                <div class="card_Content">
+                    <div>
+                        <h3><a href="/Event/Details/@userEvent.EventId">@userEvent.Event.Name</a></h3>
+                    </div>
+                    <div>
+                        <p class="loser"><strong>Loser</strong></p>
+                    </div>
+                    <div>
+                        <p class="loser">@userEvent.Event.PlayedOn</p>
+                    </div>
+                    <div>
+                        <p class="loser">@userEvent.Event.Location</p>
+                    </div>
+                </div>
+            </div>
+        }
+        else
+        {
+            <div class="card">
+                <div class="card_Content">
+                    <div>
+                        <h3><a href="/Event/Details/@userEvent.EventId">@userEvent.Event.Name</a></h3>
+                    </div>
+                    <div>
+                        <p class="unplayed">@userEvent.Event.PlayedOn</p>
+                    </div>
+                    <div>
+                        <p class="unplayed">@userEvent.Event.Location</p>
+                    </div>
+                </div>
+            </div>
+        }
+    }
+</div>
+
+<div class="userDetailBtn">
+    @if (Convert.ToInt32(HttpContextAccessor.HttpContext.Session.GetString("UserId")) == Model.Id)
+    {
+        <a class="btn btn-primary" href="/User/Delete/@Model.Id">Delete Account</a>
+        <a class="btn btn-primary" href="/User/Update/@Model.Id">Update Account</a>
+
+    }
+</div>
+

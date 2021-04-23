@@ -1,0 +1,19 @@
+﻿@model IEnumerable<GameNight.Models.User>
+
+<h1>Players</h1>
+
+@{
+    List<User> orderedList = Model.OrderBy(x => x.Username).ToList();
+}
+
+<div class="cards">
+    @foreach (var item in orderedList)
+    {
+        <div class="card">
+            <img class="cardImg" src="@item.ProfilePic" />
+            <div class="card_Content">
+                <h2><a href="/User/Details/@item.Id">@item.Username</a></h2>
+            </div>
+        </div>
+    }
+</div>

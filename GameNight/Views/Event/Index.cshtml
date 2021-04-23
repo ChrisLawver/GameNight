@@ -1,0 +1,76 @@
+﻿@model IEnumerable<GameNight.Models.Event>
+@using Microsoft.AspNetCore.Http
+@inject IHttpContextAccessor HttpContextAccessor
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@{
+    List<Event> activeEvents = Model.Where(x => x.Active).OrderByDescending(x => x.PlayedOn).ToList();
+}
+
+@{
+    List<Event> closedEvents = Model.Where(x => x.Active == false).OrderByDescending(x => x.PlayedOn).ToList();
+}
+<h1>Upcoming Events</h1>
+@foreach (var item in activeEvents)
+{
+<div class="eventBox">
+    <div class="eventContent">
+        <div class="col-8">
+            <div class="eventTitle">
+                <h2><a href="/Event/Details/@item.Id">@item.Name</a></h2>
+                <h3>@item.Game.Title</h3>
+            </div>
+            <div class="eventImg">
+                <img class="gameGalleryImage" src="@item.Game.Image" />
+            </div>
+        </div>
+
+            <div class="crud col-4">
+                @if (Convert.ToInt32(HttpContextAccessor.HttpContext.Session.GetString("UserId")) == item.OwnerId)
+                {
+                    <a class="btn btn-primary" href="/Event/Update/@item.Id">Update Event</a>
+                    <a class="btn btn-primary" href="/Event/Delete/@item.Id">Delete Event</a>
+                }
+            </div>
+
+        </div>
+    </div>
+}
+
+<div class="eventCreate">
+    @if (!String.IsNullOrEmpty(HttpContextAccessor.HttpContext.Session.GetString("UserId")))
+    {
+        int ownerId = Convert.ToInt32(HttpContextAccessor.HttpContext.Session.GetString("UserId"));
+        <a class="btn btn-primary" href="/Event/Create/?OwnerId=@ownerId">Create Event</a>
+    }
+</div>
+
+<h2>Past Events</h2>
+@foreach (var item in closedEvents)
+{
+    <div class="eventBox">
+        <div class="eventContent">
+            <div class="col-8">
+                <div class="eventTitle">
+                    <h2><a href="/Event/Details/@item.Id">@item.Name</a></h2>
+                    <h3>@item.Game.Title</h3>
+                </div>
+                <div class="eventImg">
+                    <img class="gameGalleryImage" src="@item.Game.Image" />
+                </div>
+            </div>
+
+            <div class="crud col-4">
+                @if (Convert.ToInt32(HttpContextAccessor.HttpContext.Session.GetString("UserId")) == item.OwnerId)
+                {
+                    <a class="btn btn-primary" href="/Event/Update/@item.Id">Update Event</a> <a class="btn btn-primary" href="/Event/Delete/@item.Id">Delete Event</a>
+                }
+            </div>
+
+        </div>
+    </div>
+}
+

@@ -1,0 +1,32 @@
+﻿@model GameNight.Models.Game
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+<div>
+    <div>
+        <h1 id="gameTitle">@Model.Title</h1>
+        <img class="gameGalleryImage" src="@Model.Image" />
+
+        @if (Model.MinPlayers < Model.MaxPlayers)
+        {
+            <p>Number of Players @Model.MinPlayers - @Model.MaxPlayers</p>
+        }
+        else
+        {
+            <p>Number of Players @Model.MinPlayers</p>
+        }
+
+
+        <p id="description">@Model.Title</p>
+
+    </div>
+</div>
+
+<a class="btn btn-primary" href="/Game/Index/">Game Page</a>
+
+@section scripts{
+    <script src="~/js/gameDetails.js" asp-append-version="true"></script>
+}

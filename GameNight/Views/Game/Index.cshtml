@@ -1,0 +1,53 @@
+﻿@model IEnumerable<GameNight.Models.Game>
+@using Microsoft.AspNetCore.Http
+@inject IHttpContextAccessor HttpContextAccessor
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+<section>
+    <h1>Game Gallery</h1>
+    <form>
+        <input id="search" type="search" placeholder="Search Game" />
+        <button class="btn btn-primary" id="gameSearch">Submit</button>
+    </form>
+</section>
+
+<div id="gameResult"></div>
+
+@{
+    List<Game> orderedList = Model.OrderBy(x => x.Title).ToList();
+}
+
+@foreach (var item in orderedList)
+{
+    <div class="box">
+        <div class="content">
+            <div class="col-8">
+                <div class="gameTitle">
+                    <h2><a class="gameList" href="/Game/Details/@item.Id">@item.Title</a></h2>
+                </div>
+                <div class="imgBox">
+                    <img class="gameGalleryImage" src="@item.Image" />
+                </div>
+            </div>
+
+            <div class="crud col-4">
+                @if (!String.IsNullOrEmpty(HttpContextAccessor.HttpContext.Session.GetString("UserId")))
+                {
+                    int ownerId = Convert.ToInt32(HttpContextAccessor.HttpContext.Session.GetString("UserId"));
+                    <a class="btn btn-primary" href="/Game/Delete/@item.Id">Remove from Gallery</a>
+                    <a class="btn btn-primary" href="/Event/Create/?gameId=@item.Id&OwnerId=@ownerId">Create an Event</a>
+                }
+            </div>
+
+
+        </div>
+    </div>
+}
+
+@section scripts{
+    <script src="~/js/getGame.js" asp-append-version="true"></script>
+}

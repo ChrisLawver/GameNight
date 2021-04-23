@@ -9,19 +9,86 @@ a.navbar-brand {
 
 /* Provide sufficient contrast against white background */
 a {
-  color: #0366d6;
+    color: #f77f00;
 }
+
+#homeLogo{
+    height: 650px;
+    width: 650px;
+    margin-top: -135px;
+    margin-bottom: -135px;
+}
+
+.gameList {
+    color: #f77f00;
+}
+
+a:hover {
+        color: #d62828;
+        text-decoration: none;
+}
+
+.gameList:hover {
+    color: #d62828;
+    text-decoration: none;
+}
+
+nav a:hover {
+    color: #085788;
+    text-decoration: none;
+}
+
+#nav-logo {
+    position: relative;
+    left: 15px;
+    background-size: contain;
+}
+
+#nav-userInfo {
+    margin-left: 20%;
+    background-size: contain;
+    list-style: none;
+}
+
+#nav-profilepic {
+    margin-top: 25px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+#logout {
+    margin-top: 15px;
+}
+
 
 .btn-primary {
-  color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
+    color: #d62828;
+    background-color: #fcbf49;
+    border-color: #1861ac;
 }
 
-.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
-  color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
+.eventCreate {
+    padding-left: 5px;
+}
+
+.userDetailBtn {
+    padding-top: 10px;
+    align-content: space-around;
+}
+
+.crud {
+    display:inline;
+}
+
+nav {
+    color: #d62828;
+    background-color: #fcbf49 !important;
+    font-size: 30px;
+    max-height: 90px;
+}
+
+.nav-link{
+    color: #d62828;
 }
 
 /* Sticky footer styles
@@ -58,14 +125,230 @@ html {
   min-height: 100%;
 }
 
-body {
-  /* Margin bottom by footer height */
-  margin-bottom: 60px;
+.text-center h1{
+    font-size: 75px;
 }
+
+.text-center h2 {
+    font-size: 45px;
+}
+
+body {
+    /* Margin bottom by footer height */
+    margin-bottom: 60px;
+    background-color: #085788;
+    font-family: "Cherry Cream Soda";
+    color: #fff1d0;
+}
+
+h1, h2, h3, h4, h5, h6, p {
+    color: #fff1d0;
+}
+
+p, .control-label, .form-control, form {
+    font-family: sans-serif,Arial,Calibri;
+    font-size: 20px;
+}
+
+
 .footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  white-space: nowrap;
-  line-height: 60px; /* Vertically center the text there */
+    color: #fff1d0;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    white-space: nowrap;
+    line-height: 60px; /* Vertically center the text there */
+    text-align: center;
+    font-size: 28px;
+}
+
+.gameGalleryImage{
+    max-height:150px;
+    max-width:150px;
+}
+
+.cards {
+    margin: 0 auto;
+    max-width: 1000px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 15px;
+}
+
+.userCards {
+    max-width: 1000px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 15px;
+}
+
+.card {
+    border: 2px solid #e7e7e7;
+    border-radius: 4px;
+    padding: .5rem;
+    background-color: #ebebeb;
+    background-image: url("https://www.transparenttextures.com/patterns/asfalt-dark.png");
+}
+
+
+.card:hover {
+    box-shadow: 0 5px 15px rgba(0,0,0, .5);
+}
+
+
+.cardImg {
+    width: 100%;
+    display: block;
+    padding: 10px;
+    border-radius: 4px;
+}
+
+.card_Content {
+    text-align :center;
+    line-height: 1.5;
+    font-size: 0.9rem;
+    padding: 15px;
+    background: #fafafa;
+    background-color: #ebebeb;
+    background-image: url("https://www.transparenttextures.com/patterns/asfalt-dark.png");
+}
+
+.userCard_Content {
+    text-align: center;
+    line-height: 1.5;
+    font-size: 0.9rem;
+    padding: 15px;
+    background: #fafafa;
+    background-color: #ebebeb;
+    background-image: url("https://www.transparenttextures.com/patterns/asfalt-dark.png");
+}
+
+.userCard_Content h3, .userCard_Content p {
+    color: black;
+}
+
+
+    .box {
+        top: 50%;
+        left: 50%;
+        width: 600px;
+        padding: 20px;
+        box-sizing: border-box;
+        border-radius: 4px;
+        box-shadow: 0 5px 15px rgba(0,0,0, .5);
+        display: flex;
+        transition: 0.5s;
+        margin: 6px;
+        background-color: #ebebeb;
+        background-image: url("https://www.transparenttextures.com/patterns/asfalt-dark.png");
+    }
+
+.leaderboardBox {
+    top: 50%;
+    left: 50%;
+    width: auto;
+    padding: 20px;
+    box-sizing: border-box;
+    border-radius: 4px;
+    box-shadow: 0 5px 15px rgba(0,0,0, .5);
+    display: flex;
+    transition: 0.5s;
+    margin: 6px;
+    background-color: #ebebeb;
+    background-image: url("https://www.transparenttextures.com/patterns/asfalt-dark.png");
+}
+
+.eventBox {
+    top: 50%;
+    left: 50%;
+    width: 600px;
+    padding: 20px;
+    box-sizing: border-box;
+    border-radius: 4px;
+    box-shadow: 0 5px 15px rgba(0,0,0, .5);
+    display: flex;
+    transition: 0.5s;
+    margin: 6px;
+    background-color: #ebebeb;
+    background-image: url("https://www.transparenttextures.com/patterns/asfalt-dark.png");
+}
+
+.box:hover, .leaderboardBox:hover, .eventBox:hover{
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+}
+
+.box .imgBox .eventImg .gameGalleryImage {
+    width: 150px;
+    flex: 0 0 150px;
+}
+
+.box .imgBox .eventImg .gameGalleryImage img {
+     max-width: 100%;
+}
+
+.leaderboardBox .imgBox img {
+    max-width: 100%;
+    border-radius: 4px;
+}
+
+.box .content {
+    padding-left: 20px;
+    display: flex;
+    flex-direction: row;
+}
+
+.eventBox .eventContent {
+    padding-left: 20px;
+    display: flex;
+    flex-direction: row;
+}
+
+.leaderboardBox .leaderboardContext{
+    padding-left: 20px;
+}
+
+.box .content p{
+    margin: 0;
+    padding: 10px 0 0;
+    margin-bottom: 10px;
+    text-align: justify;
+    color: #000000;
+}
+
+.gameTitle {
+    padding-left: 10px;
+}
+
+.eventTitle {
+    padding-left: 20px;
+}
+
+.eventTitle h3{
+    color: black;
+}
+
+.leaderboardBox .leaderboardContext p {
+    margin: 0;
+    padding: 10px 0 0;
+    margin-bottom: 10px;
+    text-align: justify;
+    color: #000000;
+}
+
+.eventBlock {
+    background-color: #ebebeb;
+    padding: 10px 0px 10px 20px;
+    margin-top:1em;
+}
+
+.winner{
+    color:green;
+}
+
+.loser{
+    color:red;
+}
+
+.unplayed {
+    color: #085788;
 }
