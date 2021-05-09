@@ -17,7 +17,9 @@ namespace GameNight
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            var connectionString = "Server=(localdb)\\mssqllocaldb;Database=GameNightDB;Trusted_Connection=True;MultipleActiveResultSets=True;";
+            //var connectionString = "Server = localhost; Database = master; Trusted_Connection = True MultipleActiveResultSets=True;";
+            var connectionString = "Server=localhost;Database=GameNightDB;Trusted_Connection=True;MultipleActiveResultSets=True;";
+            //var connectionString = "Server=(localdb)\\mssqllocaldb;Database=GameNightDB;Trusted_Connection=True;MultipleActiveResultSets=True;";
 
             optionsBuilder.UseSqlServer(connectionString).UseLazyLoadingProxies();
 
